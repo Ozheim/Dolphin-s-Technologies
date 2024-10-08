@@ -1,9 +1,11 @@
+import Header from "../Component/Header.jsx";
 const Home = () => {
 
 
     return (
         <div>
-            <p>DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD</p>
+            <Header/>
+                      
         </div>
     );
 }
