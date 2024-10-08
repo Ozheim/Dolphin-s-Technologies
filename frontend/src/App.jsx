@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./appsRouter.jsx";
 
 
-const app = () => {
+const App = () => {
 return(
     <BrowserRouter>
       <AppRouter />
@@ -12,4 +12,4 @@ return(
 }
 
 
-export default app; 
+export default App;
