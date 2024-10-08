@@ -52,9 +52,9 @@ server.on("listening", () => {
     console.log("Listening on " + bind);
 });
 
-// app.get("users", (req, res) => {
-//     res.json({message : "Liste des utilisateurs"});
-// })
+app.get("users", (req, res) => {
+    res.json({message : "Liste des utilisateurs"});
+})
 
 // Écoute du serveur sur le port spécifié
 server.listen(port);

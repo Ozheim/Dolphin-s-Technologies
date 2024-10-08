@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import userRoutes from './routes/userRoutes.js';
 
 
 dotenv.config();
@@ -11,7 +12,9 @@ mongoose.connect(process.env.MONGODB, {
     useUnifiedTopology: true,
 })
     .then(() => console.log("Connexion à MongoDB réussie !"))
-    .catch((error) => console.log("Connexion à MongoDB échouée....", error));  // Affiche l'erreur détaillée
+    .catch((error) => console.log("Connexion à MongoDB échouée....", error));
 
+    app.use(express.json());
+    app.use('/api', userRoutes);
 
 export default app;
