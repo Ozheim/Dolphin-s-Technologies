@@ -1,3 +1,4 @@
+
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
@@ -16,5 +17,6 @@ mongoose.connect(process.env.MONGODB, {
 
     app.use(express.json());
     app.use('/api', userRoutes);
+
 
 export default app;
