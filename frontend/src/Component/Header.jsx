@@ -9,9 +9,10 @@ const Header = () =>{
                 <img src={Logo} alt="logo" className="logo"/>
             </div>
             <ul>
-                <li><a href="../Pages/Login.jsx">Mon compte</a></li>
-                <li><a href="../Pages/accèsRecruteur">Accès Recruteur</a></li>
-                <li><a href="../Pages/emploi">Emploi</a></li>
+                <li><a href="../Login.jsx">Mon compte</a></li>
+                <li><a href="../accèsRecruteur">Accès Recruteur</a></li>
+                <li><a href="../emploi">Emploi</a></li>
+                <li><a href="../signup">SignUp</a></li>
                 <li><a href=""></a></li>
             </ul>
         </div>
