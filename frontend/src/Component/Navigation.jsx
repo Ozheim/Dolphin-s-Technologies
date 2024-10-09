@@ -1,4 +1,5 @@
 const Navigation = () => {
+
     return(
         <div className="nav-bar">
             <form action="post">
