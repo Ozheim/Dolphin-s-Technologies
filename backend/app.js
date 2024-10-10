@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes.js';
-
+import jobRoutes from "./routes/jobRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -14,7 +14,8 @@ mongoose.connect(process.env.MONGODB, {
     .then(() => console.log("Connexion à MongoDB réussie !"))
     .catch((error) => console.log("Connexion à MongoDB échouée....", error));
 
-    app.use(express.json());
-    app.use('/api', userRoutes);
+app.use(express.json());
+app.use('/api', userRoutes);
+app.use("/api", jobRoutes);
 
 export default app;
