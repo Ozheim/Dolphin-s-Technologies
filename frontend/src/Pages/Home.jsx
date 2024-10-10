@@ -11,6 +11,8 @@ const Home = () => {
             <Header/>
             <Navigation/>
             <Footer/>
+   
+
         </div>
     );
 }
