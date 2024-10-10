@@ -1,3 +1,4 @@
+
 import Logo from "../assets/logo.png";
 import "../Styles/Components/Header.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
