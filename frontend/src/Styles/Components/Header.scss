@@ -41,6 +41,10 @@ ul{
     text-decoration: none;
     transition: color 0.3s ease, text-shadow 0.3s ease; 
     }
+    li a:hover{
+        text-decoration: underline; 
+        cursor: pointer;
+    }
 
     .header-list:hover { 
     text-shadow: 0 0 5px white ; 
@@ -63,4 +67,7 @@ ul{
     text-shadow: 0 0 5px white;
     border-color: white; 
     background-color: white;
+    transition: 0.3s ease;
+    box-shadow: 0 0 15px white;
+    text-decoration: none; 
 }
