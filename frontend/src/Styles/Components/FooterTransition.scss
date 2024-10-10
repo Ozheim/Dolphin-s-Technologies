@@ -1,0 +1,16 @@
+
+  @keyframes up {
+    0%{
+      height: 5%;
+    }
+
+    50%{
+      height: 100%;
+    }
+    
+  }
+
+
+.lol{
+  animation: up 2s forwards;
+}

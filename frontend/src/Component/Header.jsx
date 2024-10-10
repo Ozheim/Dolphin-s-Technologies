@@ -3,9 +3,17 @@ import Logo from "../assets/logo.png";
 import "../Styles/Components/Header.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import FooterTransition from "../utils/FooterTransition.jsx";
+import { useState } from "react";
 
 
 const Header = () =>{
+      const [path, setPath] = useState(null); 
+
+  const Navigation = (newPath) => {
+    setPath(newPath); 
+  };
+    
 
     return(
         <div className="header-container">
@@ -14,13 +22,16 @@ const Header = () =>{
                 <img src={Logo} alt="logo" className="logo"/>
             </div>
             <ul>
-                <li><a href="../HeadHunter" className="header-list">Accès recruteur</a></li>
-                <li><a href="../emploi" className="header-list">Emploi</a></li>
-                <li><a href="../Login.jsx"className="connexion-link"><FontAwesomeIcon icon={faUser} />Connexion</a></li>    
+                <button className="header-list" onClick={() => FooterTransition("HeadHunter")}>
+                Accès recruteur
+                </button>
+                <button className="header-list" onClick={() => FooterTransition("HeadHunter")}>Emploi</button>
+                <button className="connexion-link" onClick={() => FooterTransition("HeadHunter")}><FontAwesomeIcon icon={faUser}/>Connexion</button>
+                
             </ul>
         </div>
         </div>
     )
-}
+}   
 
 export default Header;

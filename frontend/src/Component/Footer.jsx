@@ -4,7 +4,7 @@ import "../Styles/Components/footer.scss";
 const Footer = () => {
   return (
     <>
-      <div class="ocean">
+      <div id="vague" class="ocean">
         <div class="wave"></div>
         <div class="wave wave2"></div>
       </div>
