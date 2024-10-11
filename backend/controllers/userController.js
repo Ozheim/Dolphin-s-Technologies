@@ -20,12 +20,12 @@ export const createUser = async (req, res) => {
             message: "Utilisateur créé avec succès",
             user: newUser
         });
+        console.log(newUser);
     } catch (error) {
         console.error("Erreur lors de la création de l'utilisateur:", error);
         res.status(500).json({ error: "Erreur lors de la création de l'utilisateur", details: error.message });
     }
 };
-
 
 export const login = async (req, res) => {
     const { email, password } = req.body;
@@ -35,6 +35,7 @@ export const login = async (req, res) => {
         if (!user) {
             return res.status(400).json({ message: 'Utilisateur non trouvé' });
         }
+        console.log(user);
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {

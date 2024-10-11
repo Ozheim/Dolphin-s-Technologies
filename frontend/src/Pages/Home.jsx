@@ -13,7 +13,6 @@ const Home = () => {
             <Navigation/>
             {/* <Fetch/> */}
             <Footer/>
-   
 
         </div>
     );

@@ -2,7 +2,7 @@ import "../Styles/Pages/Login.scss";
 import Header from "../Component/Header"
 import Footer from "../Component/Footer"
 
-const Login = () => {
+const LoginHeadHunter = () => {
   return (
     <div>
       <Header/>
@@ -27,4 +27,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default LoginHeadHunter;
