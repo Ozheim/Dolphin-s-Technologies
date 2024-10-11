@@ -3,9 +3,11 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes.js";
 import jobRoutes from "./routes/jobRoutes.js";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
+app.use(cors());
 
 mongoose
   .connect(process.env.MONGODB, {
