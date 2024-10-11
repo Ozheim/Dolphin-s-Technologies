@@ -1,4 +1,4 @@
-import "../Styles/Pages/login.scss";
+import "../Styles/Pages/Login.scss";
 import Header from "../Component/Header"
 import Footer from "../Component/Footer"
 import React, { useEffect } from 'react';
