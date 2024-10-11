@@ -1,8 +1,13 @@
 import "../Styles/Pages/login.scss";
 import Header from "../Component/Header"
 import Footer from "../Component/Footer"
+import React, { useEffect } from 'react';
+import FooterTransitionDown from "../utils/FooterTransitonDown";
 
 const Login = () => {
+      useEffect(() => {
+        FooterTransitionDown();
+    }, []);
   return (
     <div>
       <Header/>
@@ -15,7 +20,7 @@ const Login = () => {
         </div>
         <div className="password">
           <label for="userPassword">Mot de passe</label>
-          <input type="text" id="userPassword" name="userPassword" />
+          <input type="password" id="userPassword" name="userPassword" />
         </div>
         <button type="sumbit">GO !</button>
         <p>
