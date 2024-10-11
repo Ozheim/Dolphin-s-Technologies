@@ -25,8 +25,8 @@ const Header = () =>{
                 <button className="header-list" onClick={() => FooterTransition("HeadHunter")}>
                 Accès recruteur
                 </button>
-                <button className="header-list" onClick={() => FooterTransition("HeadHunter")}>Emploi</button>
-                <button className="connexion-link" onClick={() => FooterTransition("HeadHunter")}><FontAwesomeIcon icon={faUser}/>Connexion</button>
+                <button className="header-list" onClick={() => FooterTransition("Home")}>Emploi</button>
+                <button className="connexion-link" onClick={() => FooterTransition("Login")}><FontAwesomeIcon icon={faUser}/>Connexion</button>
                 
             </ul>
         </div>

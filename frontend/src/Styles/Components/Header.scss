@@ -30,18 +30,17 @@ ul{
     justify-content: center;
     @include font-primary(1rem,400);
     align-items: center;
-    
-    li {
-    
-    list-style-type: none;   
+
 }
 
-   li a {
+   button {
+    background-color: transparent;
     color: white;
     text-decoration: none;
     transition: color 0.3s ease, text-shadow 0.3s ease; 
+    border: none;
     }
-    li a:hover{
+    button:hover{
         text-decoration: underline; 
         cursor: pointer;
     }
@@ -50,7 +49,7 @@ ul{
     text-shadow: 0 0 5px white ; 
 
     } 
-}
+
 
 .connexion-link {
     @include primary-color;
@@ -71,7 +70,3 @@ ul{
     box-shadow: 0 0 15px white;
     text-decoration: none; 
 }
-
-
-
-
