@@ -20,7 +20,7 @@ const Login = () => {
           const res = await axios({
               method: "post",
               url: "http://localhost:5000/api/login",
-              data: {email,password},
+              data: {email,password}, 
           });
           localStorage.setItem("token",res.data.token);
           console.log("user created")

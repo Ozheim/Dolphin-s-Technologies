@@ -10,20 +10,21 @@ const SignIn = () => {
         <div className="container">
           <form action="">
           <h1>Inscription</h1>
-          <div className="name">
-            <label for="userName">Nom d'utilisateur</label>
-            <input type="text" id="userName" name="userName" />
+           <div className="email">
+            <label for="userEmail">E-mail</label>
+            <input type="text" id="userEmail" name="userEmail" required/>
           </div>
           <div className="password">
             <label for="userPassword">Mot de passe</label>
-            <input type="text" id="userPassword" name="userPassword" />
+            <input type="text" id="userPassword" name="userPassword" required />
           </div>
-          <div className="email">
-            <label for="userEmail">E-mail</label>
-            <input type="text" id="userEmail" name="userEmail" />
+          <div className="password">
+            <label for="userPassword">confirmez le mot de passe </label>
+            <input type="text" id="userPassword" name="userPassword" required/>
           </div>
+         
           <div className="checko">
-          <input type="checkbox" name="checked" id="checked" /> 
+          <input type="checkbox" name="checked" id="checked" required /> 
           <span>Cochez pour accepter les termes et conditions</span>
           </div>
             <button type="sumbit">GO !</button>
@@ -33,4 +34,6 @@ const SignIn = () => {
       </div>
     );
 };
+
+
 export default SignIn;
