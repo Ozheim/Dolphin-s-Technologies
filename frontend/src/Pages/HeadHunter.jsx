@@ -9,13 +9,16 @@ import "../Styles/Pages/HeadHunter.scss";
 
 const HeadHunter = () => {
     const location = useLocation();
-     const [email, setemail] = useState();
-     const [password, setpassword] = useState();
+    const [email, setemail] = useState();
+    const [password, setpassword] = useState();
 
     useEffect(() => {
         FooterTransitionDown();
     }, []);
 
+    const headHunterHired = (e) => {
+
+    }
     const isHeadhunterPage = location.pathname === '/HeadHunter';
 
     return (
