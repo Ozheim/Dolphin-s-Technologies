@@ -1,11 +1,15 @@
+
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes.js";
 import jobRoutes from "./routes/jobRoutes.js";
+import headhunterRoutes from './routes/headhunterRoutes.js'
+import cors from "cors";
 
 dotenv.config();
 const app = express();
+app.use(cors());
 
 mongoose
   .connect(process.env.MONGODB, {
@@ -18,5 +22,7 @@ mongoose
 app.use(express.json());
 app.use("/api", userRoutes);
 app.use("/api", jobRoutes);
+app.use("/api", headhunterRoutes);
 
-export default app;
+export default app
+
