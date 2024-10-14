@@ -1,11 +1,11 @@
 
 import app from './app.js';
 import dotenv from 'dotenv';
-import { createServer } from 'http';  // Remplace require("http") par import
+import { createServer } from 'http'; 
 
-dotenv.config();  // N'oublie pas de configurer dotenv
+dotenv.config();
 
-// Fonction pour normaliser le port
+
 const normalizePort = (val) => {
     const port = parseInt(val, 10);
 
@@ -21,8 +21,8 @@ const normalizePort = (val) => {
 const port = normalizePort(process.env.PORT || "5000");
 app.set("port", port);
 
-// Gestion des erreurs de démarrage du serveur
-const errorHandler = (error) => {
+
+const errorHandler = (server, error) => {
     if (error.syscall !== "listen") {
         throw error;
     }
@@ -43,7 +43,6 @@ const errorHandler = (error) => {
     }
 };
 
-// Création du serveur HTTP avec la fonction importée
 const server = createServer(app);
 
 server.on("error", errorHandler);
@@ -53,9 +52,8 @@ server.on("listening", () => {
     console.log("Listening on " + bind);
 });
 
-app.get("users", (req, res) => {
+app.get("/users", (req, res) => {
     res.json({message : "Liste des utilisateurs"});
 })
 
-// Écoute du serveur sur le port spécifié
 server.listen(port);
