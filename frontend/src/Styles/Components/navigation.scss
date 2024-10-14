@@ -1,5 +1,10 @@
 @import "../mixins.scss";
 
+
+body {
+    overflow: visible !important;
+}
+
 .nav-bar{
     display: flex;
     width: 100%;
@@ -51,7 +56,7 @@
 }
 
 .location-container{
-        border-left: none;
+        border-left: none; 
 }
 
 
@@ -82,3 +87,7 @@
 }
 
 }
+
+
+ 
+
