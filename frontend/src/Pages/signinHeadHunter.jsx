@@ -53,7 +53,7 @@ const SigninHeadHunter = () =>{
             <input type="text" id="userPassword" name="userPassword" required onChange={(e)=> setPassword(e.target.value)}/>
           </div>
           
-          <div className="checko">
+          <div className="check-input">
           <input type="checkbox" name="checked" id="checked" required /> 
           <span>Cochez pour accepter les termes et conditions</span>
           </div>
