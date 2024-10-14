@@ -4,7 +4,6 @@ import Footer from "../Component/Footer"
 import React, { useEffect, useState } from 'react';
 import FooterTransitionDown from "../utils/FooterTransitonDown";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 
 const Login = () => {
     const [email, setemail] = useState();
