@@ -1,17 +1,14 @@
 @import "../mixins.scss";
 
 .container{
-    height: 100vh;
+
 
     form{
-
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 20vw;
-        margin-left: 34%;
-        margin-top: 3%;
+        margin-top: 2%;
         border-radius: 5%;
         padding: 3%;
         box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; 

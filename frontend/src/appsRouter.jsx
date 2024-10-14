@@ -17,6 +17,7 @@ const AppRouter = () => {
             <Route path="/SignIn" element={<SignIn/>}/>
             <Route path="/HeadHunter" element={<HeadHunter/>}/>
             <Route path="*" element={<Notfound />}/>
+            <Route path="/HeadHunter" element={<HeadHunter />}/>
         </Routes>
 
 )

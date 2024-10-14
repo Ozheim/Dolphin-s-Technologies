@@ -3,7 +3,7 @@ import app from './app.js';
 import dotenv from 'dotenv';
 import { createServer } from 'http';
 
-dotenv.config();  // N'oublie pas de configurer dotenv
+dotenv.config();
 
 const normalizePort = (val) => {
     const port = parseInt(val, 10);
@@ -20,7 +20,6 @@ const normalizePort = (val) => {
 const port = normalizePort(process.env.PORT || "5000");
 app.set("port", port);
 
-// Gestion des erreurs de démarrage du serveur
 const errorHandler = (error) => {
     if (error.syscall !== "listen") {
         throw error;
