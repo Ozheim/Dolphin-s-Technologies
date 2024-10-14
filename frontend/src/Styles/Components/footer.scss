@@ -9,9 +9,14 @@ html, body {
     position: absolute;
     bottom: 0;
     left: 0;
-    background: #800020;
+    background:  #015871;
 
   }
+
+  .ocean-red {
+  background-color: #800020;
+
+}
   
   .wave {
     background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
@@ -22,8 +27,6 @@ html, body {
     height: 198px;
     transform: translate(0, 0, 0);
     animation: wave 7s ease infinite;
-
-
   }
   
   .wave:nth-of-type(2) {
@@ -49,5 +52,6 @@ html, body {
 
 
   
+
 
 
