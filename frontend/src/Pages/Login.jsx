@@ -22,11 +22,10 @@ const Login = () => {
               method: "post",
               url: "http://localhost:5000/api/login",
               data: {email,password},
-
           });
           localStorage.setItem("token",res.data.token);
           console.log("user created")
-  
+          navigate()
         } catch(error){
           console.log("mes erreurs: " ,error)
         } 
