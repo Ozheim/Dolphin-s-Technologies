@@ -45,7 +45,7 @@ const Login = () => {
           <label for="userPassword">Mot de passe</label>
           <input type="password" id="userPassword" name="userPassword" onChange={(e)=> setpassword(e.target.value)} />
         </div>
-        <button type="sumbit" onClick={Connexion}>GO !</button>
+        <button type="submit" onClick={Connexion}>GO !</button>
         <p>
           Vous n'avez pas encore de compte ? <a href="signin">Inscrivez-vous</a>
         </p>
