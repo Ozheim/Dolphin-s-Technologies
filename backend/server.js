@@ -1,26 +1,22 @@
-
-import app from './app.js';
-import dotenv from 'dotenv';
-import { createServer } from 'http'; 
-
+import app from "./app.js";
+import dotenv from "dotenv";
+import { createServer } from "http";
 dotenv.config();
 
-
 const normalizePort = (val) => {
-    const port = parseInt(val, 10);
+  const port = parseInt(val, 10);
 
-    if (isNaN(port)) {
-        return val;
-    }
-    if (port >= 0) {
-        return port;
-    }
-    return false;
+  if (isNaN(port)) {
+    return val;
+  }
+  if (port >= 0) {
+    return port;
+  }
+  return false;
 };
 
 const port = normalizePort(process.env.PORT || "5000");
 app.set("port", port);
-
 
 const errorHandler = (server, error) => {
     if (error.syscall !== "listen") {
@@ -41,19 +37,22 @@ const errorHandler = (server, error) => {
         default:
             throw error;
     }
+
 };
 
 const server = createServer(app);
 
 server.on("error", errorHandler);
 server.on("listening", () => {
-    const address = server.address();
-    const bind = typeof address === "string" ? "pipe " + address : "port " + port;
-    console.log("Listening on " + bind);
+  const address = server.address();
+  const bind = typeof address === "string" ? "pipe " + address : "port " + port;
+  console.log("Listening on " + bind);
 });
+
 
 app.get("/users", (req, res) => {
     res.json({message : "Liste des utilisateurs"});
 })
+
 
 server.listen(port);
