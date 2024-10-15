@@ -6,6 +6,7 @@ import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import "../Styles/Components/FooterTransition.scss";
 import "../Styles/Pages/HeadHunter.scss";
+import axios from "axios";
 
 const HeadHunter = () => {
     const location = useLocation();
@@ -16,7 +17,20 @@ const HeadHunter = () => {
         FooterTransitionDown();
     }, []);
 
-    const headHunterHired = (e) => {
+    const headHunterHired = async (e) => {
+          e.preventDefault();
+      try{
+        const response = await axios({
+          method: "post",
+          url: "http://localhost:5000/api/loginHunters",
+          data: {email,password},
+        });
+        localStorage.setItem("huntertoken", response.data.huntertoken);
+        console.log("hunter created")
+    
+      }catch (error){
+        console.log("mes erreurs :", error)
+      }
 
     }
     const isHeadhunterPage = location.pathname === '/HeadHunter';
@@ -36,9 +50,9 @@ const HeadHunter = () => {
           <label for="userPassword">Mot de passe</label>
           <input type="password" id="userPassword" name="userPassword" onChange={(e)=> setpassword(e.target.value)} />
         </div>
-        <button type="submit">GO !</button>
+        <button type="submit" onClick={headHunterHired}>GO !</button>
         <p>
-          Vous n'avez pas encore de compte ? <a href="signin">Inscrivez-vous</a>
+          Vous n'avez pas encore de compte ? <a href="signinHeadHunter">Inscrivez-vous</a>
         </p>
         </form>
       </div>

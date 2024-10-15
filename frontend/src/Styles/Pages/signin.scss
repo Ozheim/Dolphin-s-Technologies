@@ -40,9 +40,10 @@
 
          }
 
-         .checko{
+         .check-input{
             display: flex;
-            justify-content: space-evenly;
+            justify-content: center;
+            gap: 5px;
             align-items: center;
             @include font-primary(1rem, 500);
             width : 110%;
