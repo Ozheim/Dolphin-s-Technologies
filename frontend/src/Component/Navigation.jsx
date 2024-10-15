@@ -18,7 +18,7 @@ const Navigation = () => {
                 <div className="location-container">
                     <label htmlFor="location">Où?</label>
 
-                   <div className="caca"><GooglePlacesAutocomplete 
+                    <div className="caca"><GooglePlacesAutocomplete
                         apiKey="AIzaSyBLQHEUDRQywbFjk2I0rEaC3tfNwo6r8Go"
                         selectProps={{
                             locationValue,
@@ -26,7 +26,7 @@ const Navigation = () => {
                             placeholder: "Ville, département, code postal"
                         }}
                     />
-                </div>
+                    </div>
                 </div>
                 <button className="submit-button"><i><FontAwesomeIcon icon={faMagnifyingGlass} /></i></button>
             </form>
