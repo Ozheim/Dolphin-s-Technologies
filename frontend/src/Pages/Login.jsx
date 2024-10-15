@@ -4,7 +4,6 @@ import Footer from "../Component/Footer"
 import React, { useEffect, useState } from 'react';
 import FooterTransitionDown from "../utils/FooterTransitonDown";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setemail] = useState();
@@ -15,7 +14,20 @@ const Login = () => {
 
   const Connexion = async (e) => {
 
-    e.preventDefault();
+        e.preventDefault();
+
+        try{
+          const res = await axios({
+              method: "post",
+              url: "http://localhost:5000/api/login",
+              data: {email,password}, 
+          });
+          localStorage.setItem("token",res.data.token);
+          console.log("user created")
+          navigate()
+        } catch(error){
+          console.log("mes erreurs: " ,error)
+        } 
 
     try {
       const res = await axios({

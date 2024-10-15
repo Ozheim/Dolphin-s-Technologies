@@ -11,7 +11,7 @@ const Header = (props) => {
     <div className="header-container">
       <div className={classNames('header', props.className)} style={props.style}>
         <div>
-          <img src={Logo} alt="logo" className="logo" />
+          <a href="/"><img src={Logo} alt="logo" className="logo" /></a>
         </div>
         <ul>
           <button className="header-list" onClick={() => FooterTransition("HeadHunter")}>
