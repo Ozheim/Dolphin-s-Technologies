@@ -29,7 +29,6 @@ const Login = () => {
     } catch (error) {
       console.log("mes erreurs: ", error)
     }
-
   }
 
   return (
