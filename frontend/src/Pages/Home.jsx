@@ -4,6 +4,7 @@ import Navigation from "../Component/Navigation.jsx";
 import Footer from "../Component/Footer.jsx";
 import JobsList from "../Component/JobsList.jsx";
 
+
 import React, { useEffect, useState } from 'react';
 import "../Styles/Components/JobsList.scss";
 import axios from "axios";
@@ -49,4 +50,3 @@ const Home = () => {
 }
 
 export default Home;
-
