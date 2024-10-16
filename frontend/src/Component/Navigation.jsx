@@ -1,6 +1,7 @@
 import "../Styles/Components/navigation.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import AutocompleteSearch from "../utils/AutoComplete.jsx";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { useState } from 'react';
 
@@ -12,7 +13,7 @@ const Navigation = () => {
             <form action="post" className="form">
                 <div className="job-container">
                     <label htmlFor="job">Quoi?</label>
-                    <input type="text" name="job" placeholder="Métier, entreprise" id="job-input" />
+                    <AutocompleteSearch />
                 </div>
 
                 <div className="location-container">
