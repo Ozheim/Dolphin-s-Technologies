@@ -3,10 +3,12 @@ import Header from "../Component/Header.jsx"
 import Navigation from "../Component/Navigation.jsx";
 import Footer from "../Component/Footer.jsx";
 import JobsList from "../Component/JobsList.jsx";
+
 import React, { useEffect, useState } from 'react';
 import "../Styles/Components/JobsList.scss";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+
 
 
 
@@ -31,6 +33,7 @@ const Home = () => {
     return (
         <div>
             <Header />
+
             <div className="opportunity-container">
                 <p>Bienvenue sur Dolphin Technologies !  </p>
                 <h1 className="h1-home">Notre job, vous aider à choisir le vôtre parmi {blog.length} offres</h1>
@@ -39,6 +42,7 @@ const Home = () => {
                  </Link>
 
             </div>
+
             <Footer />
         </div>
     );

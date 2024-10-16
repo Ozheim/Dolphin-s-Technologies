@@ -29,9 +29,11 @@
     "node": "^20.18.0",
     "nodemon": "^3.1.7",
     "react": "^18.3.1",
+    "react-autosuggest": "^10.1.0",
     "react-dom": "^18.3.1",
     "react-google-places-autocomplete": "^4.1.0",
     "react-router-dom": "^6.26.2",
+    "react-suggest": "^0.0.1",
     "sass": "^1.79.4"
   },
   "devDependencies": {

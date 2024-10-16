@@ -10,7 +10,7 @@ const auth = (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded; // Ajoute l'utilisateur décodé dans la requête
+        req.user = decoded; 
         req.hunter = decoded;
         next();
     } catch (error) {

@@ -4,8 +4,10 @@ import Notfound from "./Pages/Notfound.jsx";
 import Login from "./Pages/Login.jsx";
 import SignIn from "./Pages/SignIn.jsx";
 import HeadHunter from "./Pages/HeadHunter.jsx";
+import UserDashboard from './Pages/UserDashboard.jsx';
 import SigninHeadHunter from "./Pages/signinHeadHunter.jsx";
 import Emploi from "./Pages/emploi.jsx";
+
 
 
 
@@ -19,6 +21,7 @@ const AppRouter = () => {
             <Route path="/SignIn" element={<SignIn/>}/>
             <Route path="*" element={<Notfound />}/>
             <Route path="/HeadHunter" element={<HeadHunter />}/>
+            <Route path="/UserDashBoard" element={< UserDashboard/>}/>
             <Route path="/signinHeadHunter" element={<SigninHeadHunter/>}/>
             <Route path ="/Emploi" element={<Emploi />}/>
         </Routes>
