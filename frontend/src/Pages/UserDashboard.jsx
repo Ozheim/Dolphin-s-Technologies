@@ -1,28 +1,25 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import "../Styles/Pages/userdashboard.scss";
 
 const UserDashboard = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-
-    axios
-      .get("http://localhost:5000/api/user")
-      .then((response) => {
-        setUsers(response.data); 
-        setLoading(false); // 
+    fetch("http://localhost:5000/api/allUser")
+      .then(res => {
+        return res.json()
       })
-      .catch((err) => {
-       
-      });
-  }, []);
+      .then(data => {
+        setUsers(data);
+      })
+      .catch (error => 
+        console.error("Erreur lors de la récupération des données : ", error)
+      )
+  }, [])
 
   return (
     <div>
       
-      {loading ? <p>Chargement...</p> : null}
-
       <div className="user_container">
     
         {users.map((user) => (
