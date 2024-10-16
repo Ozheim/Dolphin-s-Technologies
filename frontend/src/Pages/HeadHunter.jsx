@@ -40,7 +40,7 @@ const HeadHunter = () => {
       <Header className={classNames({ 'header-red': isHeadhunterPage, 'header': !isHeadhunterPage })} />
       <div>
 
-        <Header className={classNames({ 'header-red': isHeadhunterPage, 'header': !isHeadhunterPage })} />
+        
         <div>
           <div className="container">
             <form action="">
