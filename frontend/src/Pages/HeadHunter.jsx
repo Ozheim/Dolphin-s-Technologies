@@ -3,12 +3,15 @@ import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import FooterTransitionDown from "../utils/FooterTransitonDown";
 import Footer from "../Component/Footer";
+import { useNavigate } from 'react-router-dom';
 import Header from "../Component/Header";
 import "../Styles/Components/FooterTransition.scss";
 import "../Styles/Pages/HeadHunter.scss";
 import axios from "axios";
 
 const HeadHunter = () => {
+  const navigate = useNavigate();
+
   const location = useLocation();
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
@@ -27,13 +30,13 @@ const HeadHunter = () => {
       });
       localStorage.setItem("huntertoken", response.data.huntertoken);
       console.log("hunter created")
-
+      navigate('/CreateOffer');
     } catch (error) {
       console.log("mes erreurs :", error)
     }
 
   }
-  const isHeadhunterPage = location.pathname === '/HeadHunter';
+  const isHeadhunterPage = location.pathname === '/HeadHunter' || location.pathname ==="/CreateOffer";
 
   return (
     <div>
