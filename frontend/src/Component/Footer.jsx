@@ -9,10 +9,12 @@ const Footer = (props) => {
 
   return (
     <>
+
       <div id="vague" className={classNames('ocean', props.className)} style={props.style}>
         <div className="wave" style={{ background: waveBackground }}></div>
         <div className="wave wave2" style={{ background: waveBackground }}></div>
       </div>
+
     </>
   );
 };

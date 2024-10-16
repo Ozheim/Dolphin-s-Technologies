@@ -7,6 +7,9 @@ import HeadHunter from "./Pages/HeadHunter.jsx";
 import UserDashboard from './Pages/UserDashboard.jsx';
 import SigninHeadHunter from "./Pages/signinHeadHunter.jsx";
 import CreateOffer from "./Pages/CreateOffer.jsx";
+import Emploi from "./Pages/emploi.jsx";
+
+
 
 const AppRouter = () => {
     return(
@@ -21,6 +24,9 @@ const AppRouter = () => {
             <Route path="/UserDashBoard" element={< UserDashboard/>}/>
             <Route path="/signinHeadHunter" element={<SigninHeadHunter/>}/>
             <Route path="/CreateOffer" element={<CreateOffer/>}/>
+
+            <Route path ="/Emploi" element={<Emploi />}/>
+
         </Routes>
 
 )

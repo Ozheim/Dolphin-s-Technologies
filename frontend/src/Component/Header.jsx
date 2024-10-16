@@ -39,7 +39,7 @@ const Header = (props) => {
           <button className="header-list" onClick={() => FooterTransition("HeadHunter")}>
             Accès recruteur
           </button>
-          <button className="header-list" onClick={() => FooterTransition("Home")}>
+          <button className="header-list" onClick={() => FooterTransition("Emploi")}>
             Emploi
           </button>
           <button className="connexion-link" onClick={() => FooterTransition("Login")}>
