@@ -12,22 +12,22 @@ const UserDashboard = () => {
       .then(data => {
         setUsers(data);
       })
-      .catch (error => 
+      .catch(error =>
         console.error("Erreur lors de la récupération des données : ", error)
       )
   }, [])
 
   return (
     <div>
-      
+
       <div className="user_container">
-    
+
         {users.map((user) => (
           <div key={user._id} className="job-card">
             <span>Nom d'utilisateur</span>
             <h2>{user.name}</h2>
             <span>Adresse e-mail</span>
-            <p>{user.email}</p> 
+            <p>{user.email}</p>
           </div>
         ))}
       </div>

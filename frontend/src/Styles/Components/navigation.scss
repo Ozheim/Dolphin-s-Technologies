@@ -11,14 +11,17 @@ body {
     justify-content: center;
     margin-top: 3%;
 
+
+
     form {
         display: flex;
-        width: auto;
+        width: 30%;
         justify-content: center;
         @include font-primary(1rem, 400);
 
         label {
             margin-bottom: 10%;
+
         }
 
         input {
@@ -47,9 +50,9 @@ body {
 
 
     .job-container {
-        position: relative;
         border-radius: 10px 0 0 10px;
         border-right: 1px solid rgba(0, 128, 128, 0.322);
+
     }
 
     .location-container {
@@ -85,5 +88,11 @@ body {
             transition: 0.3s ease;
         }
     }
+
+
+.caca {
+    width: 300px;
+    cursor: text;
+}
 
 }

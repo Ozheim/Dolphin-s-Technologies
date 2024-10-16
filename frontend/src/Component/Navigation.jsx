@@ -15,7 +15,6 @@ const Navigation = () => {
                     <label htmlFor="job">Quoi?</label>
                     <AutocompleteSearch />
                 </div>
-
                 <div className="location-container">
                     <label htmlFor="location">Où?</label>
 

@@ -14,19 +14,19 @@ const Login = () => {
 
   const Connexion = async (e) => {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        try{
-          const res = await axios({
-              method: "post",
-              url: "http://localhost:5000/api/login",
-              data: {email,password}, 
-          });
-          localStorage.setItem("token",res.data.token);
-          console.log("user created")
-        } catch(error){
-          console.log("mes erreurs: " ,error)
-        } 
+    try {
+      const res = await axios({
+        method: "post",
+        url: "http://localhost:5000/api/login",
+        data: { email, password },
+      });
+      localStorage.setItem("token", res.data.token);
+      console.log("user created")
+    } catch (error) {
+      console.log("mes erreurs: ", error)
+    }
 
     try {
       const res = await axios({
