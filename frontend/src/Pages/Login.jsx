@@ -1,63 +1,58 @@
 import "../Styles/Pages/Login.scss";
-import Header from "../Component/Header"
-import Footer from "../Component/Footer"
+import Header from "../Component/Header";
+import Footer from "../Component/Footer";
 import React, { useEffect, useState } from 'react';
 import FooterTransitionDown from "../utils/FooterTransitonDown";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom'; 
 
 const Login = () => {
-  const [email, setemail] = useState();
-  const [password, setpassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
   useEffect(() => {
     FooterTransitionDown();
   }, []);
 
   const Connexion = async (e) => {
-
-        e.preventDefault();
-
-        try{
-          const res = await axios({
-              method: "post",
-              url: "http://localhost:5000/api/login",
-              data: {email,password}, 
-          });
-          localStorage.setItem("token",res.data.token);
-          navigate(`/emploi/${response.data.userId}`);
-          console.log("user created")
-        } catch(error){
-          console.log("mes erreurs: " ,error)
-        } 
+    e.preventDefault();
 
     try {
-      const res = await axios({
-        method: "post",
-        url: "http://localhost:5000/api/login",
-        data: { email, password },
-      });
+      const res = await axios.post("http://localhost:5000/api/login", { email, password });
       localStorage.setItem("token", res.data.token);
-      console.log("user created")
-      navigate()
+      navigate(`/emploi/${res.data.userId}`); 
+      console.log("user connected");
     } catch (error) {
-      console.log("mes erreurs: ", error)
+      console.log("mes erreurs: ", error);
     }
-  }
+  };
 
   return (
     <div>
       <Header />
       <div className="container">
-        <form action="">
+        <form onSubmit={Connexion}>
           <h1>Connexion</h1>
           <div className="name">
-            <label for="userName">Adresse Email</label>
-            <input type="text" id="userName" name="userName" onChange={(e) => setemail(e.target.value)} />
+            <label htmlFor="userName">Adresse Email</label>
+            <input
+              type="text"
+              id="userName"
+              name="userName"
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="password">
-            <label for="userPassword">Mot de passe</label>
-            <input type="password" id="userPassword" name="userPassword" onChange={(e) => setpassword(e.target.value)} />
+            <label htmlFor="userPassword">Mot de passe</label>
+            <input
+              type="password"
+              id="userPassword"
+              name="userPassword"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
-          <button type="submit" onClick={Connexion}>GO !</button>
+          <button type="submit">GO !</button>
           <p>
             Vous n'avez pas encore de compte ? <a href="signin">Inscrivez-vous</a>
           </p>
@@ -67,4 +62,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login;

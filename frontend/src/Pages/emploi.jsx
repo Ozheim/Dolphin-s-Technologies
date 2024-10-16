@@ -17,6 +17,13 @@ const Emploi = () => {
         <div>
             <Header/>
             <Navigation/>
+            <div className="job-page-container">
+                <div className="list-of-Job">
+                    
+                </div>
+                <div className="descripion"></div>
+            </div>
+
             <Footer/>
         </div>
     )
