@@ -9,7 +9,7 @@ import axios from "axios";
 
 const Emploi = () => {
   const [jobs, setJobs] = useState([]);
-  const [JobDescritpion, setJobDescription] = useState(null); 
+  const [JobDescritpion, setJobDescription] = useState(null);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -27,8 +27,8 @@ const Emploi = () => {
     FooterTransitionDownJobPage();
   }, []);
 
-  const JobClick = (job) => {
-    setJobDescription(job); 
+  const JobClick = (jobId) => {
+    setJobDescription(jobId);
   };
 
   return (
@@ -37,30 +37,45 @@ const Emploi = () => {
       <Navigation />
       <div className="job-page-container">
         <div className="list-of-jobs">
-          {jobs.map(job => (
+          {jobs.map((job) => (
             <div
               key={job._id}
               className="job-card"
-              onClick={() => JobClick(job)}
+              onClick={() => JobClick(job._id)}
             >
-              <h2>{job.title}</h2>
+              <h2>{job.title}</h2> 
+              <p>{job.company}</p>
+              <p>{job.location}</p>
             </div>
-          ))}
+          ))} 
         </div>
+
         <div className="description">
-          {JobDescritpion ? (
-            <div>
-              <h3>Description du poste</h3>
-              <p>{JobDescritpion.description}</p>
+          <div className="div_class_to_fixed">
+          {jobs.map((job) => (
+            job._id === JobDescritpion ? (
+              <div key={job._id}>
+                <div>
+                  <h2>{job.title}</h2> 
+                  <p>{job.salary}</p>
+                  <p>{job.JobType}</p>
+                  <button><a href="../CreateOffer">Postulez maintenant !</a></button>
+              </div>
+                <h3>Description du poste</h3>
+                <p>{job.jobType}</p>
+                <p>{job.description}</p>
+                <p></p>
+              </div>
+            ) : null
+          ))}
             </div>
-          ) : (
-            <p>Sélectionnez un job pour voir la description.</p>
-          )}
+
         </div>
       </div>
-      <Footer />
+      <Footer/>
     </div>
   );
 };
 
 export default Emploi;
+

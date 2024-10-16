@@ -16,19 +16,32 @@ const Login = () => {
   }, []);
 
   const Connexion = async (e) => {
+  e.preventDefault();
 
-    e.preventDefault();
+  try {
+    const res = await axios({
+      method: "post",
+      url: "http://localhost:5000/api/login",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        email,
+        password,
+      },
+    });
+
+  
+    localStorage.setItem("token", res.data.token);
+    
+    navigate(`/emploi/${res.data.userId}`);
+    console.log("user connected");
+  } catch (error) {
+    console.log("mes erreurs: ", error);
+  }
+};
 
 
-    try {
-      const res = await axios.post("http://localhost:5000/api/login", { email, password });
-      localStorage.setItem("token", res.data.token);
-      navigate(`/emploi/${res.data.userId}`); 
-      console.log("user connected");
-    } catch (error) {
-      console.log("mes erreurs: ", error);
-    }
-  };
 
   return (
     <div>
