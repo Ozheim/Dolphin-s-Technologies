@@ -45,7 +45,6 @@ body {
         flex-direction: column;
     }
 
-
     .job-container {
         position: relative;
         border-radius: 10px 0 0 10px;
@@ -54,9 +53,15 @@ body {
 
     .location-container {
         border-left: none;
+
     }
 
 
+    .job-container {
+        position: relative;
+        border-radius: 10px 0 0 10px;
+        border-right: 1px solid rgba(0, 128, 128, 0.322);
+    }
 
     .submit-button {
         display: flex;
@@ -87,3 +92,4 @@ body {
     }
 
 }
+

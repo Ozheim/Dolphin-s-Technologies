@@ -23,6 +23,7 @@ const Login = () => {
               data: {email,password}, 
           });
           localStorage.setItem("token",res.data.token);
+          navigate(`/emploi/${response.data.userId}`);
           console.log("user created")
         } catch(error){
           console.log("mes erreurs: " ,error)
