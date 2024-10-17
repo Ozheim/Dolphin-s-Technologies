@@ -14,7 +14,7 @@ import ApplyPage from "./Pages/ApplyPage.jsx";
 
 const AppRouter = () => {
     return(
-
+ 
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />}/>
@@ -27,10 +27,11 @@ const AppRouter = () => {
             <Route path="/CreateOffer" element={<CreateOffer/>}/>
             <Route path="/ApplyPage" element={<ApplyPage/>}/>
             <Route path ="/Emploi" element={<Emploi />}/>
-
+ 
         </Routes>
-
+ 
 )
 }
-
+ 
 export default AppRouter;
+ 

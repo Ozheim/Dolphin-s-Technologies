@@ -1,4 +1,4 @@
-// controllers/jobController.js
+
 import JobOffer from "../models/job.js";
 
 export const createJobOffers = async (req, res) => {
@@ -32,6 +32,7 @@ export const getJobById = async (req, res) => {
     if (!getOneJob) {
       return res.status(404).json({ error: "pas de job trouvé" });
     }
+
 
     res.status(200).json(getOneJob);
   } catch (error) {
