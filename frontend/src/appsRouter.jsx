@@ -9,6 +9,7 @@ import UserDashboard from './Pages/UserDashboard.jsx';
 import SigninHeadHunter from "./Pages/signinHeadHunter.jsx";
 import CreateOffer from "./Pages/CreateOffer.jsx";
 import Emploi from "./Pages/emploi.jsx";
+import ApplyPage from "./Pages/ApplyPage.jsx";
 import PrivateRoute from './utils/PrivateRoute.jsx';
 
 const AppRouter = () => {
@@ -24,6 +25,8 @@ const AppRouter = () => {
             <Route path="/UserDashBoard" element={< UserDashboard />} />
             <Route path="/signinHeadHunter" element={<SigninHeadHunter />} />
             <Route path="/Emploi" element={<Emploi />} />
+            <Route path="/ApplyPage" element={<ApplyPage/>}/>
+              
 
             <Route
                 path="/CreateOffer"
@@ -42,8 +45,8 @@ const AppRouter = () => {
                 }
             />
         </Routes>
-
     )
 }
-
+   
 export default AppRouter;
+ 

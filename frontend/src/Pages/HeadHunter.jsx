@@ -8,18 +8,18 @@ import Header from "../Component/Header";
 import "../Styles/Components/FooterTransition.scss";
 import "../Styles/Pages/HeadHunter.scss";
 import axios from "axios";
-
+ 
 const HeadHunter = () => {
   const navigate = useNavigate();
-
+ 
   const location = useLocation();
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
-
+ 
   useEffect(() => {
     FooterTransitionDown();
   }, []);
-
+ 
   const headHunterHired = async (e) => {
     e.preventDefault();
     try {
@@ -41,6 +41,7 @@ const HeadHunter = () => {
   };
 
   const isHeadhunterPage = location.pathname === '/HeadHunter' || location.pathname === "/CreateOffer";
+
 
   return (
     <div>
@@ -64,14 +65,15 @@ const HeadHunter = () => {
               <p>
                 Vous n'avez pas encore de compte ? <a href="signinHeadHunter">Inscrivez-vous</a>
               </p>
+
             </form>
           </div>
         </div>
         <Footer className={classNames({ 'ocean-red': isHeadhunterPage, 'ocean': !isHeadhunterPage })} isHeadhunterPage={isHeadhunterPage} />
-
+ 
       </div>
     </div>
   );
 };
-
+ 
 export default HeadHunter;

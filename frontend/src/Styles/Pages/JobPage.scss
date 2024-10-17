@@ -1,0 +1,105 @@
+@import "../mixins.scss";
+
+html,body{
+    overflow: visible;
+    overflow-y: visible;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9f9f9;
+}
+
+
+.job-page-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.list-of-jobs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 40%;
+    margin-left: 20%;
+    gap: 20px;
+
+
+    h2{
+        min-width: 350px;
+    }
+    
+    .job-card{
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    cursor: pointer;
+
+    }
+    .job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+    
+}
+
+.description{
+    display: flex;
+    justify-content: center;
+    width: 50%;    
+   
+}
+h2 {
+    font-size: 1.5rem;
+    color: #3F4D5E;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1rem;
+    color: #6EA0F9;
+}
+
+.div_class_to_fixed{
+    position: fixed;
+    border-radius: 20px;
+    padding:20px;
+    height: 35vh;
+    width: 35%;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+    
+    p{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 10px;
+        line-height: 1.5;
+        color: #3F4D5E;
+    }
+}
+
+.search-bar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    input {
+        width: 40vw;
+        border: none;
+        border-radius: 10px;
+        padding: 2%; 
+        @include font-primary(1rem, 500);
+    }
+}
