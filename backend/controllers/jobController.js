@@ -3,11 +3,11 @@ import JobOffer from "../models/job.js";
 
 export const createJobOffers = async (req, res) => {
     try {
-        const jobOffers = req.body;
-        const insertedJobs = await JobOffer.insertMany(jobOffers);
-        res.status(201).json(insertedJobs);
+        const jobOffer = new JobOffer(req.body);
+        const insertedJob = await jobOffer.save();
+        res.status(201).json(insertedJob);
     } catch (error) {
-        res.status(500).json({ message: "Erreur lors de l'ajout des offres", error });
+        res.status(500).json({ message: "Erreur lors de l'ajout de l'offre", error });
     }
 };
 

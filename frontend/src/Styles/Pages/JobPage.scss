@@ -1,0 +1,61 @@
+html,body{
+    overflow: visible;
+    overflow-y: visible;
+    overflow-x: hidden;
+
+}
+
+
+.job-page-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.list-of-jobs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 40%;
+    margin-left: 20%;
+    gap: 20px;
+
+
+    h2{
+        min-width: 350px;
+    }
+    
+    .job-card{
+    border-radius: 10px;
+    box-shadow: 0 0 5px grey;
+    padding: 20px;
+    width: 80%;
+
+    }
+
+    
+}
+
+.description{
+    display: flex;
+    justify-content: center;
+    width: 50%;    
+   
+}
+
+.div_class_to_fixed{
+    position: fixed;
+    box-shadow: 0 0 5px grey;
+    border-radius: 20px;
+    padding:20px;
+    height: 35vh;
+    width: 35%;
+    
+    p{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+

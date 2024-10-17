@@ -106,7 +106,7 @@ const AutocompleteSearch = () => {
 
     const getSuggestions = (inputValue) => {
         const regex = new RegExp(inputValue.trim(), 'i');
-        return jobTitles.filter((jobTitles) => regex.test(jobTitles)).slice(0,4);
+        return jobTitles.filter((jobTitles) => regex.test(jobTitles)).slice(0, 4);
     };
 
     const onSuggestionsFetchRequested = ({ value }) => {
@@ -128,7 +128,8 @@ const AutocompleteSearch = () => {
     const inputProps = {
         placeholder: 'Type to search...',
         value,
-        onChange
+        onChange,
+        className: 'input-field'
     };
 
     const theme = {

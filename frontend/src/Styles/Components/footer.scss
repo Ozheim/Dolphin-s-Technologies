@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .ocean {
@@ -49,9 +50,3 @@ html, body {
       transform: translate(0, 5px);
     }
   }
-
-
-  
-
-
-
