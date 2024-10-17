@@ -26,7 +26,7 @@ const AppRouter = () => {
             <Route path="/signinHeadHunter" element={<SigninHeadHunter/>}/>
             <Route path="/CreateOffer" element={<CreateOffer/>}/>
             <Route path="/ApplyPage" element={<ApplyPage/>}/>
-            <Route path ="/Emploi" element={<Emploi />}/>
+            <Route path ="/Emploi" element={<Emploi/>}/>
  
         </Routes>
  
