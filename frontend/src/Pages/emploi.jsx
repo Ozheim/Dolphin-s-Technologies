@@ -80,7 +80,7 @@ const Emploi = () => {
         <div className="description">
           <div className="div_class_to_fixed">
           {jobs.map((job) => (
-            job._id === JobDescription ? (
+            job._id === jobDescription ? (
               <div key={job._id}>
                 <div>
                   <h2>{job.title}</h2> 
