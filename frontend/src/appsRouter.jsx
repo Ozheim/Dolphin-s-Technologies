@@ -8,17 +8,10 @@ import UserDashboard from './Pages/UserDashboard.jsx';
 import SigninHeadHunter from "./Pages/signinHeadHunter.jsx";
 import CreateOffer from "./Pages/CreateOffer.jsx";
 import Emploi from "./Pages/emploi.jsx";
-<<<<<<< HEAD
-import Test from "./Component/test.jsx"
- 
- 
- 
-=======
 import ApplyPage from "./Pages/ApplyPage.jsx";
 
 
 
->>>>>>> b26c258ee264ceab8faa815041c3e4ce95eb4b94
 const AppRouter = () => {
     return(
  
@@ -32,12 +25,8 @@ const AppRouter = () => {
             <Route path="/UserDashBoard" element={< UserDashboard/>}/>
             <Route path="/signinHeadHunter" element={<SigninHeadHunter/>}/>
             <Route path="/CreateOffer" element={<CreateOffer/>}/>
-<<<<<<< HEAD
-=======
             <Route path="/ApplyPage" element={<ApplyPage/>}/>
->>>>>>> b26c258ee264ceab8faa815041c3e4ce95eb4b94
             <Route path ="/Emploi" element={<Emploi />}/>
-            <Route path ="/Test" element={<Test />}/>
  
         </Routes>
  

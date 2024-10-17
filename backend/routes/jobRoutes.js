@@ -5,7 +5,7 @@ import { createJobOffers, getAllJobOffers } from "../controllers/jobController.j
 const router = express.Router();
 
 router.post("/jobs", createJobOffers);
-router.get("/jobss", getAllJobOffers);
+router.get("/jobs", getAllJobOffers);
 
 
 

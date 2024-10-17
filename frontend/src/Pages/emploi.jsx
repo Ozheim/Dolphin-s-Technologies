@@ -1,4 +1,3 @@
-import Navigation from "../Component/Navigation";
 import Header from "../Component/Header";
 import FooterTransitionDownJobPage from "../utils/FooterTransitionDownJobPage.jsx";
 import React, { useState, useEffect } from 'react';
@@ -9,7 +8,8 @@ import axios from "axios";
 
 const Emploi = () => {
   const [jobs, setJobs] = useState([]);
-  const [JobDescritpion, setJobDescription] = useState(null);
+  const [jobDescription, setJobDescription] = useState(null);  
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -27,56 +27,83 @@ const Emploi = () => {
     FooterTransitionDownJobPage();
   }, []);
 
-  const JobClick = (jobId) => {
+  const handleJobClick = (jobId) => {
     setJobDescription(jobId);
   };
+
+
+  const filteredJobs = jobs.filter((job) => {
+    if (search === "") {
+      return job; // 
+    } 
+    else if (job.title.toLowerCase().includes(search.toLowerCase())) {
+      return job; 
+    }
+    else if (job.location.toLowerCase().includes(search.toLowerCase())) {
+      return job; 
+    }
+    else if (job.company.toLowerCase().includes(search.toLowerCase())) {
+      return job; 
+    }
+    return null;
+  });
 
   return (
     <div>
       <Header />
-      <Navigation />
+      <div className="search-bar">
+      <input
+        type="text"
+        placeholder="Rechercher un job par intitulé, nom de l'entreprise ou location ..."
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      </div>
       <div className="job-page-container">
         <div className="list-of-jobs">
-          {jobs.map((job) => (
-            <div
-              key={job._id}
-              className="job-card"
-              onClick={() => JobClick(job._id)}
-            >
-              <h2>{job.title}</h2> 
-              <p>{job.company}</p>
-              <p>{job.location}</p>
-            </div>
-          ))} 
+          {filteredJobs.length > 0 ? (
+            filteredJobs.map((job) => (
+              <div
+                key={job._id}
+                className="job-card"
+                onClick={() => handleJobClick(job._id)} // Corrected function name
+              >
+                <h2>{job.title}</h2>
+                <p>{job.company}</p>
+                <p>{job.location}</p>
+              </div>
+            ))
+          ) : (
+            <p>Aucun job trouvé</p>
+          )}
         </div>
 
         <div className="description">
           <div className="div_class_to_fixed">
-          {jobs.map((job) => (
-            job._id === JobDescritpion ? (
-              <div key={job._id}>
-                <div>
-                  <h2>{job.title}</h2> 
-                  <p>{job.salary}</p>
-                  <p>{job.JobType}</p>
-                  <button><a href="../ApplyPage">Postulez maintenant !</a></button>
-              </div>
-                <h3>Description du poste</h3>
-                <p>{job.jobType}</p>
-                <p>{job.requirements}</p>
-                <p>{job.description}</p>
-                <p></p>
-              </div>
-            ) : null
-          ))}
-            </div>
-
+            {jobs.map((job) =>
+              job._id === jobDescription ? (
+                <div key={job._id}>
+                  <div>
+                    <h2>{job.title}</h2>
+                    <p>{job.salary}</p>
+                    <p>{job.JobType}</p>
+                    {/* Link to Apply Page */}
+                    <button>
+                      <a href="../ApplyPage">Postulez maintenant !</a>
+                    </button>
+                  </div>
+                  <h3>Description du poste</h3>
+                  <p>{job.jobType}</p>
+                  <p>{job.requirements}</p>
+                  <p>{job.description}</p>
+                </div>
+              ) : null
+            )}
+          </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
 
 export default Emploi;
-
