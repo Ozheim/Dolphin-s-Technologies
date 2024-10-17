@@ -12,6 +12,7 @@ const Emploi = () => {
   const [jobDescription, setJobDescription] = useState(null);  
   const [search, setSearch] = useState("");
 
+
   useEffect(() => {
     const fetchJobs = async () => {
       try {

@@ -31,8 +31,10 @@ const CreateOffer = () => {
             const requirementsArray = requirements.split(',').map(req => req.trim());
             const salaryNumber = Number(salary);
             const salaryValue = isNaN(salaryNumber) ? salary : salaryNumber;
-
+            const token = localStorage.getItem("huntertoken");
+            console.log("Token envoyé avec la requête :", token);
             const response = await axios.post("http://localhost:5000/api/jobs", {
+
                 title,
                 company,
                 location,
@@ -41,13 +43,18 @@ const CreateOffer = () => {
                 requirements: requirementsArray,
                 applyLink,
                 jobType,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("huntertoken")}`,
+                },
             });
-            console.log("Offre d'emploi créée :", response.data);
 
+            console.log("Offre d'emploi créée :", response.data);
         } catch (error) {
             console.error("Erreur lors de la création de l'offre :", error);
         }
     };
+
 
     return (
         <div>

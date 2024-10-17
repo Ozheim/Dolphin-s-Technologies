@@ -4,7 +4,7 @@ import Footer from "../Component/Footer";
 import React, { useEffect, useState } from 'react';
 import FooterTransitionDown from "../utils/FooterTransitonDown";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,36 +12,43 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+
     FooterTransitionDown();
   }, []);
 
   const Connexion = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const res = await axios({
-      method: "post",
-      url: "http://localhost:5000/api/login",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: {
-        email,
-        password,
-      },
-    });
+    try {
+        const res = await axios.post("http://localhost:5000/api/login", {
+            email,
+            password,
+        });
 
-  
-    localStorage.setItem("token", res.data.token);
-    
-    navigate(`/emploi/${res.data.userId}`);
-    console.log("user connected");
-  } catch (error) {
-    console.log("mes erreurs: ", error);
-  }
+        console.log('Réponse API :', res.data);
+
+        const { token, userId, role } = res.data;
+
+        if (!token || !role) {
+            throw new Error('Données manquantes dans la réponse API');
+        }
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("role", role);
+
+        if (role === 'admin') {
+            navigate('/admin/dashboard');
+        } else if (role === 'headhunter') {
+            navigate('/CreateOffer');
+        } else {
+            navigate(`/emploi/${userId}`);
+        }
+
+        console.log("Utilisateur connecté", role);
+    } catch (error) {
+        console.log("Erreur : ", error.response ? error.response.data.message : error.message);
+    }
 };
-
-
 
   return (
     <div>
