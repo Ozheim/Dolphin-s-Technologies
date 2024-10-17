@@ -1,5 +1,5 @@
 import express from "express";
-import { auth, adminAuth, headhunterAuth } from "../middleware/auth.js";
+import { headhunterAuth } from "../middleware/auth.js";
 import {
   createJobOffers,
   getAllJobOffers,

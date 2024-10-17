@@ -1,4 +1,5 @@
 import JobOffer from "../models/job.js";
+import PostForm from "../models/postForm.js";
 
 export const createJobOffers = async (req, res) => {
   try {
@@ -32,9 +33,22 @@ export const getJobById = async (req, res) => {
       return res.status(404).json({ error: "pas de job trouvé" });
     }
 
-
     res.status(200).json(getOneJob);
   } catch (error) {
     res.status(500).json({ error: "serveur hs" });
+  }
+};
+
+export const postJobOnApplyPage = async (req, res) => {
+  console.log(req.body);
+  try {
+    const postForm = new PostForm(req.body);
+    const formSaved = await postForm.save();
+    res.status(201).json(formSaved);
+  } catch (error) {
+    console.error("Error saving form:", error);
+    res
+      .status(500)
+      .json({ message: "Erreur lors de la sauvegarde du formulaire", error });
   }
 };
