@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
@@ -9,7 +9,15 @@ import '../Styles/Components/Header.scss';
 import soundFile from '../assets/sound_effect.mp3';
 
 const Header = (props) => {
+  const [userName, setUserName] = useState(null);
   const audioRef = useRef(null);
+
+  useEffect(() => {
+    const name = localStorage.getItem("name");
+    if (name) {
+      setUserName(name);
+    }
+  }, []);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -43,7 +51,7 @@ const Header = (props) => {
             Emploi
           </button>
           <button className="connexion-link" onClick={() => FooterTransition("Login")}>
-            <FontAwesomeIcon icon={faUser} /> Connexion
+            <FontAwesomeIcon icon={faUser} /> {userName ? userName : "Connexion"}
           </button>
         </ul>
       </div>

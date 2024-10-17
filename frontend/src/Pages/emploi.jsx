@@ -1,6 +1,6 @@
 import Header from "../Component/Header";
 import FooterTransitionDownJobPage from "../utils/FooterTransitionDownJobPage.jsx";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import "../Styles/Components/FooterTransition.scss";
 import Footer from "../Component/Footer";
@@ -8,46 +8,47 @@ import "../Styles/Pages/JobPage.scss";
 import axios from "axios";
 
 const Emploi = () => {
-  const [jobs, setJobs] = useState([]);
-  const [jobDescription, setJobDescription] = useState(null);  
-  const [search, setSearch] = useState("");
+    const [jobs, setJobs] = useState([]);
+    const [jobDescription, setJobDescription] = useState(null);
+    const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/api/jobs");
-        setJobs(response.data);
-      } catch (error) {
-        console.error("Erreur lors de la récupération des jobs :", error);
-      }
+
+    useEffect(() => {
+        const fetchJobs = async () => {
+            try {
+                const response = await axios.get("http://localhost:5000/api/jobs");
+                setJobs(response.data);
+            } catch (error) {
+                console.error("Erreur lors de la récupération des jobs :", error);
+            }
+        };
+        fetchJobs();
+    }, []);
+
+    useEffect(() => {
+        FooterTransitionDownJobPage();
+    }, []);
+
+    const handleJobClick = (jobId) => {
+        setJobDescription(jobId);
     };
-    fetchJobs();
-  }, []);
-
-  useEffect(() => {
-    FooterTransitionDownJobPage();
-  }, []);
-
-  const handleJobClick = (jobId) => {
-    setJobDescription(jobId);
-  };
 
 
-  const filteredJobs = jobs.filter((job) => {
-    if (search === "") {
-      return job; // 
-    } 
-    else if (job.title.toLowerCase().includes(search.toLowerCase())) {
-      return job; 
-    }
-    else if (job.location.toLowerCase().includes(search.toLowerCase())) {
-      return job; 
-    }
-    else if (job.company.toLowerCase().includes(search.toLowerCase())) {
-      return job; 
-    }
-    return null;
-  });
+    const filteredJobs = jobs.filter((job) => {
+        if (search === "") {
+            return job;
+        }
+        else if (job.title.toLowerCase().includes(search.toLowerCase())) {
+            return job;
+        }
+        else if (job.location.toLowerCase().includes(search.toLowerCase())) {
+            return job;
+        }
+        else if (job.company.toLowerCase().includes(search.toLowerCase())) {
+            return job;
+        }
+        return null;
+    });
 
   return (
     <div>
@@ -80,7 +81,7 @@ const Emploi = () => {
         <div className="description">
           <div className="div_class_to_fixed">
           {jobs.map((job) => (
-            job._id === jobDescription ? (
+            job._id === JobDescription ? (
               <div key={job._id}>
                 <div>
                   <h2>{job.title}</h2> 
