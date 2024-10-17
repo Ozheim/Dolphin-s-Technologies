@@ -1,5 +1,6 @@
 import Header from "../Component/Header";
 import FooterTransitionDownJobPage from "../utils/FooterTransitionDownJobPage.jsx";
+import {Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import "../Styles/Components/FooterTransition.scss";
 import Footer from "../Component/Footer";
@@ -76,29 +77,28 @@ const Emploi = () => {
             <p>Aucun job trouvé</p>
           )}
         </div>
-
         <div className="description">
           <div className="div_class_to_fixed">
-            {jobs.map((job) =>
-              job._id === jobDescription ? (
-                <div key={job._id}>
-                  <div>
-                    <h2>{job.title}</h2>
-                    <p>{job.salary}</p>
-                    <p>{job.JobType}</p>
-                    {/* Link to Apply Page */}
-                    <button>
-                      <a href="../ApplyPage">Postulez maintenant !</a>
-                    </button>
-                  </div>
-                  <h3>Description du poste</h3>
-                  <p>{job.jobType}</p>
-                  <p>{job.requirements}</p>
-                  <p>{job.description}</p>
-                </div>
-              ) : null
-            )}
-          </div>
+          {jobs.map((job) => (
+            job._id === JobDescription ? (
+              <div key={job._id}>
+                <div>
+                  <h2>{job.title}</h2> 
+                  <p>{job.salary}</p>
+                  <p>{job.JobType}</p>
+                  <button>
+                   <Link to={`/ApplyPage?id=${job._id}`}>Postulez maintenant !</Link>
+                   </button>
+              </div>
+                <h3>Description du poste</h3>
+                <p>{job.jobType}</p>
+                <p>{job.requirements}</p>
+                <p>{job.description}</p>
+                <p></p>
+              </div>
+            ) : null
+          ))}
+            </div>
         </div>
       </div>
       <Footer />
