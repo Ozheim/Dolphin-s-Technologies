@@ -20,35 +20,36 @@ const Login = () => {
     e.preventDefault();
 
     try {
-        const res = await axios.post("http://localhost:5000/api/login", {
-            email,
-            password,
-        });
+      const res = await axios.post("http://localhost:5000/api/login", {
+        email,
+        password,
+      });
 
-        console.log('Réponse API :', res.data);
+      console.log('Réponse API :', res.data);
 
-        const { token, userId, role } = res.data;
+      const { token, userId, role, name } = res.data;
 
-        if (!token || !role) {
-            throw new Error('Données manquantes dans la réponse API');
-        }
+      if (!token || !role || !name) {
+        throw new Error('Données manquantes dans la réponse API');
+      }
 
-        localStorage.setItem("token", token);
-        localStorage.setItem("role", role);
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
+      localStorage.setItem("name", name);
 
-        if (role === 'admin') {
-            navigate('/admin/dashboard');
-        } else if (role === 'headhunter') {
-            navigate('/CreateOffer');
-        } else {
-            navigate(`/emploi/${userId}`);
-        }
+      if (role === 'admin') {
+        navigate('/admin/dashboard');
+      } else if (role === 'headhunter') {
+        navigate('/CreateOffer');
+      } else {
+        navigate(`/emploi/${userId}`);
+      }
 
-        console.log("Utilisateur connecté", role);
+      console.log("Utilisateur connecté", role);
     } catch (error) {
-        console.log("Erreur : ", error.response ? error.response.data.message : error.message);
+      console.log("Erreur : ", error.response ? error.response.data.message : error.message);
     }
-};
+  };
 
   return (
     <div>

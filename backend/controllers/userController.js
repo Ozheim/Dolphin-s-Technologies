@@ -49,7 +49,7 @@ export const login = async (req, res) => {
             { expiresIn: '1h' }
         );
 
-        res.json({ token, userId: user._id, role: user.role });
+        res.json({ token, userId: user._id, role: user.role, name: user.name});
     } catch (error) {
         res.status(500).json({ message: 'Erreur lors de la connexion', error });
     }
