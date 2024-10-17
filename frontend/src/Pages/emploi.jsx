@@ -1,6 +1,7 @@
 import Navigation from "../Component/Navigation";
 import Header from "../Component/Header";
 import FooterTransitionDownJobPage from "../utils/FooterTransitionDownJobPage.jsx";
+import {Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import "../Styles/Components/FooterTransition.scss";
 import Footer from "../Component/Footer";
@@ -59,7 +60,9 @@ const Emploi = () => {
                   <h2>{job.title}</h2> 
                   <p>{job.salary}</p>
                   <p>{job.JobType}</p>
-                  <button><a href="../ApplyPage">Postulez maintenant !</a></button>
+                  <button>
+                   <Link to={`/ApplyPage?id=${job._id}`}>Postulez maintenant !</Link>
+                   </button>
               </div>
                 <h3>Description du poste</h3>
                 <p>{job.jobType}</p>
