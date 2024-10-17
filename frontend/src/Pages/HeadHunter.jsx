@@ -1,66 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import classNames from 'classnames';
-import FooterTransitionDown from "../utils/FooterTransitonDown";
-import Footer from "../Component/Footer";
-import Header from "../Component/Header";
-import "../Styles/Components/FooterTransition.scss";
-import "../Styles/Pages/HeadHunter.scss";
-import axios from "axios";
+import axios from 'axios';
 
-const HeadHunter = () => {
-  const location = useLocation();
-  const [email, setemail] = useState();
-  const [password, setpassword] = useState();
+const JobSearch = () => {
+  const [jobs, setJobs] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredJobs, setFilteredJobs] = useState([]);
+
+  const fetchJobs = async () => {
+    try {
+      const response = await axios.get('http://localhost:5173/api/jobs');
+      setJobs(response.data);
+    } catch (error) {
+      console.error('Erreur lors de la récupération des offres d\'emploi', error);
+    }
+  };
 
   useEffect(() => {
-    FooterTransitionDown();
+    fetchJobs();
   }, []);
 
-  const headHunterHired = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios({
-        method: "post",
-        url: "http://localhost:5000/api/loginHunters",
-        data: { email, password },
-      });
-      localStorage.setItem("huntertoken", response.data.huntertoken);
-      console.log("hunter created")
-
-    } catch (error) {
-      console.log("mes erreurs :", error)
-    }
-
-  }
-  const isHeadhunterPage = location.pathname === '/HeadHunter';
+  useEffect(() => {
+    const filtered = jobs.filter(job =>
+      job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      job.location.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredJobs(filtered);
+  }, [searchTerm, jobs]);
 
   return (
     <div>
-      <Header className={classNames({ 'header-red': isHeadhunterPage, 'header': !isHeadhunterPage })} />
-      <div>
-        <div className="container">
-          <form action="">
-            <h1>Connexion</h1>
-            <div className="name">
-              <label for="userName">Nom d'utilisateur</label>
-              <input type="text" id="userName" name="userName" onChange={(e) => setemail(e.target.value)} />
-            </div>
-            <div className="password">
-              <label for="userPassword">Mot de passe</label>
-              <input type="password" id="userPassword" name="userPassword" onChange={(e) => setpassword(e.target.value)} />
-            </div>
-            <button type="submit" onClick={headHunterHired}>GO !</button>
-            <p>
-              Vous n'avez pas encore de compte ? <a href="signinHeadHunter">Inscrivez-vous</a>
-            </p>
-          </form>
-        </div>
-
-      </div>
-      <Footer className={classNames({ 'ocean-red': isHeadhunterPage, 'ocean': !isHeadhunterPage })} isHeadhunterPage={isHeadhunterPage} />
+      <input
+        type="text"
+        placeholder="Rechercher par titre ou localisation..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <ul>
+        {filteredJobs.length > 0 ? (
+          filteredJobs.map(job => (
+            <li key={job._id}>
+              <h2>{job.title}</h2>
+              <p>{job.location}</p>
+              <p>{job.description}</p>
+            </li>
+          ))
+        ) : (
+          <p>Aucun résultat trouvé.</p>
+        )}
+      </ul>
     </div>
   );
 };
 
-export default HeadHunter;
+export default JobSearch;
