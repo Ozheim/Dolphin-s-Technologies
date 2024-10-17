@@ -19,9 +19,7 @@ const UserDashboard = () => {
 
   return (
     <div>
-
       <div className="user_container">
-
         {users.map((user) => (
           <div key={user._id} className="job-card">
             <span>Nom d'utilisateur</span>

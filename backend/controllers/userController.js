@@ -4,7 +4,7 @@ import User from '../models/user.js';
 
 export const createUser = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, role } = req.body;
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
@@ -13,6 +13,7 @@ export const createUser = async (req, res) => {
             name,
             email,
             password: hashedPassword,
+            role: role || 'user',
         });
 
         await newUser.save();
@@ -25,6 +26,7 @@ export const createUser = async (req, res) => {
         res.status(500).json({ error: "Erreur lors de la création de l'utilisateur", details: error.message });
     }
 };
+
 
 
 export const login = async (req, res) => {
@@ -40,19 +42,50 @@ export const login = async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ message: 'Mot de passe incorrect' });
         }
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
+        const token = jwt.sign(
+            { id: user._id, role: user.role },
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' }
+        );
+
+        res.json({ token, userId: user._id, role: user.role, name: user.name});
     } catch (error) {
         res.status(500).json({ message: 'Erreur lors de la connexion', error });
     }
 };
 
+
+
 export const getAllUsers = async (req, res) => {
     try {
-        const user = await User.find();
-        res.status(200).json(user);
+        const users = await User.find();
+        console.log('Utilisateurs trouvés:', users);
+
+        if (users.length === 0) {
+            return res.status(404).json({ message: "Aucun utilisateur trouvé" });
+        }
+
+        res.status(200).json(users);
     } catch (error) {
-        res.status(500).json({ message: "Erreur lors de la récupération des offres", error });
+        console.error("Erreur lors de la récupération des utilisateurs:", error);
+        res.status(500).json({ message: "Erreur lors de la récupération des utilisateurs", error });
     }
 };
+
+
+export const deleteUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findByIdAndDelete(id);
+
+        if (!user) {
+            return res.status(404).json({ message: 'Utilisateur non trouvé.' });
+        }
+
+        res.status(200).json({ message: "Utilisateur supprimé avec succès" });
+    } catch (error) {
+        res.status(500).json({ message: "Erreur lors de la suppression de l'utilisateur", error });
+    }
+};
+
