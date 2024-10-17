@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import "../Styles/Pages/ApplyPage.scss";
 import Header from "../Component/Header.jsx";
@@ -11,6 +11,7 @@ import { faLocationDot,faMoneyBill,faClock } from '@fortawesome/free-solid-svg-i
 const ApplyPage = () => {
   const location = useLocation();
   const [job, setJob] = useState(null);
+  
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState(null);
   const [firstName, setFirstName] = useState(null);
@@ -22,7 +23,8 @@ const ApplyPage = () => {
   const id = searchParams.get('id'); 
 
   /****************************** post function for form  ********************************/
-
+  const navigate = useNavigate();
+ 
   const postForm = ()=>{
     try{
 
@@ -39,6 +41,7 @@ const ApplyPage = () => {
 
       },
       });
+      navigate("/Applied");
       console.log("merci d'avoir postulé", post.data)
       
     }catch(error){
