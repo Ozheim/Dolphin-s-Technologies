@@ -23,45 +23,47 @@ const HeadHunter = () => {
   const headHunterHired = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios({
-        method: "post",
-        url: "http://localhost:5000/api/loginHunters",
-        data: { email, password },
+      const response = await axios.post("http://localhost:5000/api/loginHunters", {
+        email,
+        password,
       });
-      localStorage.setItem("huntertoken", response.data.huntertoken);
-      console.log("hunter created")
+
+      const { huntertoken } = response.data;
+
+      localStorage.setItem("huntertoken", huntertoken);
+      localStorage.setItem("role", 'headhunter');
+
+      console.log("Connexion réussie, token reçu :", huntertoken);
       navigate('/CreateOffer');
     } catch (error) {
-      console.log("mes erreurs :", error)
+      console.error("Erreur lors de la connexion :", error);
     }
+  };
 
-  }
-  const isHeadhunterPage = location.pathname === '/HeadHunter' || location.pathname ==="/CreateOffer";
+  const isHeadhunterPage = location.pathname === '/HeadHunter' || location.pathname === "/CreateOffer";
 
   return (
     <div>
-      <Header className={classNames({ 'header-red': isHeadhunterPage, 'header': !isHeadhunterPage })} />
       <div>
-
         <Header className={classNames({ 'header-red': isHeadhunterPage, 'header': !isHeadhunterPage })} />
         <div>
           <div className="container">
             <form action="">
-            <h1>Connexion</h1>
-            <div className="name">
-              <label for="userName">Nom d'utilisateur</label>
-              <input type="text" id="userName" name="userName" onChange={(e)=> setemail(e.target.value)} />
-            </div>
-            <div className="password">
-              <label for="userPassword">Mot de passe</label>
-              <input type="password" id="userPassword" name="userPassword" onChange={(e)=> setpassword(e.target.value)} />
+              <h1>Connexion</h1>
+              <div className="name">
+                <label for="userName">Nom d'utilisateur</label>
+                <input type="text" id="userName" name="userName" onChange={(e) => setemail(e.target.value)} />
+              </div>
+              <div className="password">
+                <label for="userPassword">Mot de passe</label>
+                <input type="password" id="userPassword" name="userPassword" onChange={(e) => setpassword(e.target.value)} />
 
 
-            </div>
-            <button type="submit" onClick={headHunterHired}>GO !</button>
-            <p>
-              Vous n'avez pas encore de compte ? <a href="signinHeadHunter">Inscrivez-vous</a>
-            </p>
+              </div>
+              <button type="submit" onClick={headHunterHired}>GO !</button>
+              <p>
+                Vous n'avez pas encore de compte ? <a href="signinHeadHunter">Inscrivez-vous</a>
+              </p>
             </form>
           </div>
         </div>

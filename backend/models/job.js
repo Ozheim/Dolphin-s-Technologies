@@ -1,5 +1,3 @@
-// models/job.js
-
 import mongoose from "mongoose";
 
 const jobOfferSchema = new mongoose.Schema({
