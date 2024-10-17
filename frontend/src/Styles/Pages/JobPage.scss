@@ -2,7 +2,10 @@ html,body{
     overflow: visible;
     overflow-y: visible;
     overflow-x: hidden;
-
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9f9f9;
 }
 
 
@@ -29,11 +32,20 @@ html,body{
     
     .job-card{
     border-radius: 10px;
-    box-shadow: 0 0 5px grey;
     padding: 20px;
     width: 80%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    cursor: pointer;
 
     }
+    .job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
 
     
 }
@@ -44,18 +56,33 @@ html,body{
     width: 50%;    
    
 }
+h2 {
+    font-size: 1.5rem;
+    color: #3F4D5E;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1rem;
+    color: #6EA0F9;
+}
 
 .div_class_to_fixed{
     position: fixed;
-    box-shadow: 0 0 5px grey;
     border-radius: 20px;
     padding:20px;
     height: 35vh;
     width: 35%;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
     
     p{
         display: flex;
         flex-wrap: wrap;
+        margin-top: 10px;
+        line-height: 1.5;
+        color: #3F4D5E;
     }
 }
-

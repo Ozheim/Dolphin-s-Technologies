@@ -59,10 +59,11 @@ const Emploi = () => {
                   <h2>{job.title}</h2> 
                   <p>{job.salary}</p>
                   <p>{job.JobType}</p>
-                  <button><a href="../CreateOffer">Postulez maintenant !</a></button>
+                  <button><a href="../ApplyPage">Postulez maintenant !</a></button>
               </div>
                 <h3>Description du poste</h3>
                 <p>{job.jobType}</p>
+                <p>{job.requirements}</p>
                 <p>{job.description}</p>
                 <p></p>
               </div>
