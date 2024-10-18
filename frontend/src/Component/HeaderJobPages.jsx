@@ -29,7 +29,7 @@ const HeaderJobPages = (props) => {
         <button className="header-list" onClick={() => FooterTransitionNoWave("Emploi")}>
           Emploi
         </button>
-        <button className="connexion-link" onClick={() => FooterTransitionNoWave("Login")}>
+        <button className="connexion-link" onClick={() => FooterTransitionNoWave("UserDashboard")}>
           <FontAwesomeIcon icon={faUser} /> {userName ? userName : "Connexion"}
         </button>
       </ul>

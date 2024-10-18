@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Header from "../Component/Header";
 import Footer from "../Component/Footer";
+import classNames from 'classnames';
 import "../Styles/Pages/HeadHunterDashBoard.scss";
 
 const HeadHunterDashBoard = () => {
     const [hunter, setHunter] = useState([]);
+    const companyName = localStorage.getItem('companyName');
+    const role = localStorage.getItem('role');
 
     useEffect(() => {
         const fetchHunter = async () => {
@@ -41,7 +44,7 @@ const HeadHunterDashBoard = () => {
 
     return (
         <>
-            <Header />
+            <Header companyName={companyName} role={role} className={classNames({ 'header-red': 1 })} />
             <div className="dashboard-container">
                 <div className="informations-card">
                     {hunter.map(h => (
@@ -57,7 +60,8 @@ const HeadHunterDashBoard = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+            <Footer className={classNames({ 'ocean-red': 1, 'ocean': 1})} isHeadhunterPage={1} />
+
         </>
     );
 };
