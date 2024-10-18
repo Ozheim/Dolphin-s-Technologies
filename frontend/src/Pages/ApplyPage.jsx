@@ -9,6 +9,7 @@ import { faLocationDot,faMoneyBill,faClock } from '@fortawesome/free-solid-svg-i
 
 
 const ApplyPage = () => {
+  document.body.classList.add("apply-page-body");
   const location = useLocation();
   const [job, setJob] = useState(null);
   
