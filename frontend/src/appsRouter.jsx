@@ -25,9 +25,7 @@ const AppRouter = () => {
             <Route path="/UserDashBoard" element={< UserDashboard />} />
             <Route path="/signinHeadHunter" element={<SigninHeadHunter />} />
             <Route path="/Emploi" element={<Emploi />} />
-            <Route path="/ApplyPage" element={<ApplyPage/>}/>
-              
-
+            <Route path="/ApplyPage" element={<ApplyPage />} />
             <Route
                 path="/CreateOffer"
                 element={
