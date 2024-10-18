@@ -25,10 +25,10 @@ const Header = (props) => {
       if (role === 'headhunter') {
         navigate('/HeadHunterDashBoard');
       } else {
-        FooterTransition("UserDashboard");
+        FooterTransition("UserDashboard", navigate);
       }
     } else {
-      FooterTransition("Login");
+      FooterTransition("Login", navigate);
     }
   };
 
@@ -49,7 +49,7 @@ const Header = (props) => {
         <ul>
           {role !== 'headhunter' ? (
             <>
-              <button className="header-list" onClick={() => FooterTransition("HeadHunter")}>
+              <button className="header-list" onClick={() => FooterTransition("HeadHunter", navigate)}>
                 Accès recruteur
               </button>
             </>
@@ -57,9 +57,9 @@ const Header = (props) => {
             <div></div>
           )}
 
-          <button className="header-list" onClick={() => FooterTransition("Emploi")}>
+          <button className="header-list" onClick={() => FooterTransition("Emploi", navigate)}>
             Emploi
-          </button> 
+          </button>
           {/* on affiche le name et la deconnection si le user est logged, sinon connexion */}
 
 

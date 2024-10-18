@@ -1,4 +1,4 @@
-function FooterTransitionNoWave(path) {
+function FooterTransitionNoWave(path, navigate) {
     const oceanElement = document.querySelector('.ocean');
     const footer = document.querySelector(".footerOnJobPages");
 
@@ -11,7 +11,7 @@ function FooterTransitionNoWave(path) {
         oceanElement.classList.add('wave-up');
 
         setTimeout(() => {
-            window.location.pathname = "/" + path;
+            navigate("/" + path);
             oceanElement.classList.remove('wave-up');
         }, 800);
     }
