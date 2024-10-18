@@ -26,8 +26,22 @@ const AppRouter = () => {
             <Route path="/signinHeadHunter" element={<SigninHeadHunter />} />
             <Route path="/Emploi" element={<Emploi />} />
             <Route path="/ApplyPage" element={<ApplyPage/>}/>
-            <Route path ="/Emploi" element={<Emploi />}/>
- 
+            <Route
+                path="/CreateOffer"
+                element={
+                    <PrivateRoute roleRequired="headhunter">
+                        <CreateOffer />
+                    </PrivateRoute>
+                }
+            />
+            <Route
+                path="/admin/dashboard"
+                element={
+                    <PrivateRoute roleRequired="admin">
+                        <AdminDashboard />
+                    </PrivateRoute>
+                }
+            />
         </Routes>
     )
 }

@@ -1,8 +1,7 @@
 import "../Styles/Pages/Home.scss";
 import Header from "../Component/Header.jsx"
-import Navigation from "../Component/Navigation.jsx";
 import Footer from "../Component/Footer.jsx";
-import JobsList from "../Component/JobsList.jsx";
+
 
 
 import React, { useEffect, useState } from 'react';
@@ -32,7 +31,6 @@ const Home = () => {
   return (
     <div>
       <Header />
-
       <div className="opportunity-container">
         <p>Bienvenue sur Dolphin Technologies !  </p>
         <h1 className="h1-home">Notre job, vous aider à choisir le vôtre parmi {blog.length} offres</h1>
