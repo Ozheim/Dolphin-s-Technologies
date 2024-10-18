@@ -12,17 +12,16 @@ import axios from "axios";
 
 const HeadHunter = () => {
 
- useEffect(() => {
-        const htmlElement = document.documentElement;
-        htmlElement.style.margin = "0";
-        htmlElement.style.overflow = "hidden";
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+    htmlElement.style.margin = "0";
+    htmlElement.style.overflow = "hidden";
 
- 
-        return () => {
-            htmlElement.style.margin = "";
-            htmlElement.style.overflow = "";
-        };
-    }, []);
+    return () => {
+      htmlElement.style.margin = "";
+      htmlElement.style.overflow = "";
+    };
+  }, []);
 
 
   const navigate = useNavigate();
@@ -51,7 +50,6 @@ const HeadHunter = () => {
       localStorage.setItem("huntertoken", huntertoken);
       localStorage.setItem("role", 'headhunter');
       localStorage.setItem("companyName", companyName);
-      console.log('companyName stored in localStorage (HeadHunter):', localStorage.getItem('companyName'));
 
 
       console.log("Connexion réussie, token reçu :", huntertoken);

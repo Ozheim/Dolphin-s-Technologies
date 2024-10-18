@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from '../utils/AuthContext.jsx';
 import "../Styles/Pages/userdashboard.scss";
 
 const UserDashboard = () => {
+  const { name, userId } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
+  console.log(userId);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/allUser")
@@ -19,14 +22,10 @@ const UserDashboard = () => {
   return (
     <div>
       <div className="user_container">
-        {users.map((user) => (
-          <div key={user._id} className="job-card">
-            <span>Nom d'utilisateur</span>
-            <h2>{user.name}</h2>
-            <span>Adresse e-mail</span>
-            <p>{user.email}</p>
-          </div>
-        ))}
+        <span>Nom d'utilisateur</span>
+        <h2>{userId}</h2>
+        <span>Adresse e-mail</span>
+        <p>{name}</p>
       </div>
     </div>
   );
