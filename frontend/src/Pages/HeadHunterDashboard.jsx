@@ -11,23 +11,18 @@ const HeadHunterDashBoard = () => {
         const fetchHunter = async () => {
             try {
                 const token = localStorage.getItem("huntertoken");
-                const id = localStorage.getItem("huntertoken");
+                const id = localStorage.getItem("hunterId"); 
                 
-                if (!id) {
-                    console.log("token no fund ");
-                    return;
-                }
-
-                const reHunter = await axios.get(`http://localhost:5000/api/findHunters/${id}`, { // Added the missing "/"
+                const reshunter = await axios.get(`http://localhost:5000/api/headhunters/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${token}` 
                     }
                 });
 
-                console.log('API Response:', reHunter.data);
+                console.log('API Response:', reshunter.data);
 
-                if (reHunter.data && reHunter.data.length) {
-                    setHunter(reHunter.data);
+                if (reshunter.data && reshunter.data.length) {
+                    setHunter(reshunter.data);
                 } else {
                     console.log("No hunter found.");
                 }
@@ -45,7 +40,7 @@ const HeadHunterDashBoard = () => {
             <div className="dashboard-container">
                 <div className="informations-card">
                     {hunter.map(h => (
-                        <h1 key={h._id}>{h.companyName}</h1> 
+                        <h1 key={id}>{h.companyName}</h1> 
                     ))}
                 </div>
                 <div className="annonces">
