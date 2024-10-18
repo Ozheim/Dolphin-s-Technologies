@@ -31,31 +31,33 @@ export const createUser = async (req, res) => {
 
 export const login = async (req, res) => {
     const { email, password } = req.body;
-
+    let tokenTime = "1h";
     try {
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(400).json({ message: 'Utilisateur non trouvé' });
         }
-
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(400).json({ message: 'Mot de passe incorrect' });
         }
+        if (user.role === "admin")
+            tokenTime = "24h";
+        console.log("JE SUIS UN " + user.role)
 
         const token = jwt.sign(
             { id: user._id, role: user.role },
             process.env.JWT_SECRET,
-            { expiresIn: '1h' }
+            { expiresIn: tokenTime }
         );
+        console.log('LE TOKEN TIME :', tokenTime);
+        console.log(' :', tokenTime);
 
-        res.json({ token, userId: user._id, role: user.role, name: user.name});
+        res.json({ token, userId: user._id, role: user.role, name: user.name });
     } catch (error) {
         res.status(500).json({ message: 'Erreur lors de la connexion', error });
     }
 };
-
-
 
 export const getAllUsers = async (req, res) => {
     try {

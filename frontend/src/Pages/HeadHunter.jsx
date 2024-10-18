@@ -8,18 +8,18 @@ import Header from "../Component/Header";
 import "../Styles/Components/FooterTransition.scss";
 import "../Styles/Pages/HeadHunter.scss";
 import axios from "axios";
- 
+
 const HeadHunter = () => {
   const navigate = useNavigate();
- 
+
   const location = useLocation();
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
- 
+
   useEffect(() => {
     FooterTransitionDown();
   }, []);
- 
+
   const headHunterHired = async (e) => {
     e.preventDefault();
     try {
@@ -70,10 +70,10 @@ const HeadHunter = () => {
           </div>
         </div>
         <Footer className={classNames({ 'ocean-red': isHeadhunterPage, 'ocean': !isHeadhunterPage })} isHeadhunterPage={isHeadhunterPage} />
- 
+
       </div>
     </div>
   );
 };
- 
+
 export default HeadHunter;
