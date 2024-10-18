@@ -77,7 +77,7 @@ const Emploi = () => {
           ) : (
             <p>Aucun job trouvé</p>
           )}
-        </div>
+        </div> 
         <div className="description">
           <div className="div_class_to_fixed">
           {jobs.map((job) => (
