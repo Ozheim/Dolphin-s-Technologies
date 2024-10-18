@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Styles/Pages/ApplyPage.scss";
-import Header from "../Component/Header.jsx";
+import HeaderJobPages from "../Component/HeaderJobPages.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot, faMoneyBill, faClock } from '@fortawesome/free-solid-svg-icons';
 
+import { faLocationDot,faMoneyBill,faClock } from '@fortawesome/free-solid-svg-icons';
+import Footer from "../Component/Footer.jsx";
 
 
 const ApplyPage = () => {
+    
   const location = useLocation();
   const [job, setJob] = useState(null);
 
@@ -74,9 +76,11 @@ const ApplyPage = () => {
     return <div>Loading...</div>;
   }
 
+
+
   return (
     <div>
-      <Header />
+      <HeaderJobPages/>
       {job ? (
         <div className="apply-job-container">
           <div className="form-container">
@@ -121,6 +125,8 @@ const ApplyPage = () => {
       ) : (
         <p>Aucun job trouvé.</p>
       )}
+     
+      <Footer className="footerOnJobPages hidden-footer" />
     </div>
   );
 };

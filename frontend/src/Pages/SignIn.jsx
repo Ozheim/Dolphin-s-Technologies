@@ -1,10 +1,22 @@
 import "../Styles/Pages/signin.scss"
 import Header from "../Component/Header"
 import Footer from "../Component/Footer"
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from 'axios';
 
 const SignIn = () => {
+
+   useEffect(() => {
+        const htmlElement = document.documentElement;
+        htmlElement.style.margin = "0";
+        htmlElement.style.overflow = "hidden";
+
+ 
+        return () => {
+            htmlElement.style.margin = "";
+            htmlElement.style.overflow = "";
+        };
+    }, []);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [name, setName] = useState();

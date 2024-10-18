@@ -11,6 +11,20 @@ import "../Styles/Pages/HeadHunter.scss";
 import axios from "axios";
 
 const HeadHunter = () => {
+
+ useEffect(() => {
+        const htmlElement = document.documentElement;
+        htmlElement.style.margin = "0";
+        htmlElement.style.overflow = "hidden";
+
+ 
+        return () => {
+            htmlElement.style.margin = "";
+            htmlElement.style.overflow = "";
+        };
+    }, []);
+
+
   const navigate = useNavigate();
   const { setCompanyName, setRole } = useContext(AuthContext);
   const location = useLocation();
@@ -40,14 +54,14 @@ const HeadHunter = () => {
       console.log('companyName stored in localStorage (HeadHunter):', localStorage.getItem('companyName'));
 
 
-      navigate('/CreateOffer');
+      console.log("Connexion réussie, token reçu :", huntertoken);
+      navigate('/HeadHunterDashBoard');
     } catch (error) {
       console.error("Erreur lors de la connexion :", error);
     }
   };
 
-
-  const isHeadhunterPage = location.pathname === '/HeadHunter' || location.pathname === "/CreateOffer";
+  const isHeadhunterPage = location.pathname === '/HeadHunter' || location.pathname === "/DashBoardHeadHunter";
 
   return (
     <div>
