@@ -4,10 +4,10 @@ import Footer from "../Component/Footer";
 import classNames from 'classnames';
 import axios from "axios";
 import React, { useState,useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 const SigninHeadHunter = () => {
-
+  const Navigate = useNavigate()
   
  useEffect(() => {
         const htmlElement = document.documentElement;
@@ -35,7 +35,7 @@ const SigninHeadHunter = () => {
       });
       localStorage.setItem("huntertoken", response.data.huntertoken);
       console.log("hunter created");
-      Navigate()
+      Navigate("/HeadHunterDashBoard")
     }
     catch (error) {
       console.log("mes erreurs: ", error)

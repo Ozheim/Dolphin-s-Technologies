@@ -30,8 +30,9 @@ const SignIn = () => {
         url: "http://localhost:5000/api/createUsers",
         data: { name, email, password },
       })
-      localStorage.setItem("huntertoken", response.data.huntertoken)
-      console.log("user log")
+      localStorage.setItem("huntertoken", response.data.huntertoken);
+      console.log("user log");
+      
 
     } catch (error) {
       console.log("erreur : ", error)

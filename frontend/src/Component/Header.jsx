@@ -53,7 +53,7 @@ const Header = (props) => {
           </button>
           <button className="header-list" onClick={() => FooterTransition("Emploi")}>
             Emploi
-          </button>
+          </button> 
           {/* on affiche le name et la deconnection si le user est logged, sinon connexion */}
           {displayName ? (
             <>
