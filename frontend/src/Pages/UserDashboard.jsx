@@ -16,7 +16,6 @@ const UserDashboard = () => {
         console.error("Erreur lors de la récupération des données : ", error)
       )
   }, [])
-
   return (
     <div>
       <div className="user_container">

@@ -8,6 +8,8 @@ import FooterTransitionDown from "../utils/FooterTransitonDown";
 import "../Styles/Pages/CreateOffer.scss";
 
 const CreateOffer = () => {
+    const companyName = localStorage.getItem('companyName');
+    const role = localStorage.getItem('role');
     const [title, setTitle] = useState('');
     const [company, setCompany] = useState('');
     const [location, setLocation] = useState('');
@@ -58,10 +60,10 @@ const CreateOffer = () => {
 
     return (
         <div>
-            <Header className={classNames({ 'header-red': isHeadhunterPage, 'header': !isHeadhunterPage })} />
+            <Header companyName={companyName} role={role} className={classNames({ 'header-red': isHeadhunterPage, 'header': !isHeadhunterPage })} />
             <div className="container2">
-                <form className="form"onSubmit={Offer}>
-                <h1>Créer une offre</h1>
+                <form className="form" onSubmit={Offer}>
+                    <h1>Créer une offre</h1>
                     <div className="left">
                         <div className="title">
                             <label htmlFor="offerTitle">Titre de l'offre</label>
@@ -89,8 +91,8 @@ const CreateOffer = () => {
                             </select>
                         </div>
                     </div>
-                   <div className="right">
-                    <div className="description">
+                    <div className="right">
+                        <div className="description">
                             <label htmlFor="offerDescription">Description</label>
                             <textarea id="offerDescription" name="offerDescription" onChange={(e) => setDescription(e.target.value)} />
                         </div>
@@ -102,10 +104,10 @@ const CreateOffer = () => {
                             <label htmlFor="offerApplyLink">Postuler sur un site externe </label>
                             <input type="text" id="offerApplyLink" name="offerApplyLink" onChange={(e) => setApplyLink(e.target.value)} />
                         </div>
-                   </div>
-                   <button type="submit">GO !</button>
+                    </div>
+                    <button type="submit">GO !</button>
                 </form>
-          </div>
+            </div>
             <Footer className={classNames({ 'ocean-red': isHeadhunterPage, 'ocean': !isHeadhunterPage })} isHeadhunterPage={isHeadhunterPage} />
 
         </div>

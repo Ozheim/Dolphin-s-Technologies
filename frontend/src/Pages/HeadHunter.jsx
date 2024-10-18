@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import FooterTransitionDown from "../utils/FooterTransitonDown";
 import Footer from "../Component/Footer";
+import { AuthContext } from '../utils/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import Header from "../Component/Header";
 import "../Styles/Components/FooterTransition.scss";
@@ -25,7 +26,7 @@ const HeadHunter = () => {
 
 
   const navigate = useNavigate();
-
+  const { setCompanyName, setRole } = useContext(AuthContext);
   const location = useLocation();
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
@@ -41,11 +42,17 @@ const HeadHunter = () => {
         email,
         password,
       });
+      const companyName = response.data.headhunter.companyName;
+      setCompanyName(companyName);
+      setRole('headhunter');
 
       const { huntertoken } = response.data;
 
       localStorage.setItem("huntertoken", huntertoken);
       localStorage.setItem("role", 'headhunter');
+      localStorage.setItem("companyName", companyName);
+      console.log('companyName stored in localStorage (HeadHunter):', localStorage.getItem('companyName'));
+
 
       console.log("Connexion réussie, token reçu :", huntertoken);
       navigate('/HeadHunterDashBoard');
@@ -55,7 +62,6 @@ const HeadHunter = () => {
   };
 
   const isHeadhunterPage = location.pathname === '/HeadHunter' || location.pathname === "/DashBoardHeadHunter";
-
 
   return (
     <div>

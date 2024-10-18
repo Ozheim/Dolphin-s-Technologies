@@ -80,7 +80,6 @@ const AdminDashboard = () => {
     }
     const isAdminPage = location.pathname === '/admin/dashboard';
 
-
     return (
         <div>
             <Header className={classNames({ 'header-black': isAdminPage, 'header': !isAdminPage })} />

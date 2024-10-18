@@ -1,10 +1,11 @@
 import "../Styles/Pages/Login.scss";
 import Header from "../Component/Header";
 import Footer from "../Component/Footer";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import FooterTransitionDown from "../utils/FooterTransitonDown";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../utils/AuthContext.jsx';
 
 const Login = () => {
 
@@ -25,9 +26,9 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { setName, setRole } = useContext(AuthContext);
 
   useEffect(() => {
-
     FooterTransitionDown();
   }, []);
 
@@ -39,7 +40,6 @@ const Login = () => {
         email,
         password,
       });
-
       console.log('Réponse API :', res.data);
 
       const { token, userId, role, name } = res.data;
@@ -50,7 +50,12 @@ const Login = () => {
 
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
+      localStorage.setItem("userId", userId);
       localStorage.setItem("name", name);
+
+      // Mettre à jour le contexte
+      setName(name);
+      setRole(role);
 
       if (role === 'admin') {
         navigate('/admin/dashboard');
@@ -58,6 +63,7 @@ const Login = () => {
         navigate('/CreateOffer');
       } else {
         navigate(`/emploi`);
+
         // navigate(`/emploi/${userId}`);
       }
 
