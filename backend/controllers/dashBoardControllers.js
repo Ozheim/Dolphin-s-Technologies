@@ -32,10 +32,12 @@ export const hunterDashboard = async (req, res) => {
     }
 
     res.json({
-      id:_id,
+      id:hunter._id,
       name: hunter.companyName
     });
   } catch (error) {
     res.status(500).json({ message: "Erreur serveur.", error: error.message });
   }
+
+  
 };

@@ -12,7 +12,6 @@ const Emploi = () => {
     const [jobDescription, setJobDescription] = useState(null);
     const [search, setSearch] = useState("");
 
-
     useEffect(() => {
         const fetchJobs = async () => {
             try {
@@ -32,7 +31,6 @@ const Emploi = () => {
     const handleJobClick = (jobId) => {
         setJobDescription(jobId);
     };
-
 
     const filteredJobs = jobs.filter((job) => {
         if (search === "") {

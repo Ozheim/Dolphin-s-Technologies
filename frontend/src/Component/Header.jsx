@@ -10,10 +10,9 @@ import '../Styles/Components/Header.scss';
 import soundFile from '../assets/sound_effect.mp3';
 
 const Header = (props) => {
-  const { companyName, name, role, logout } = useContext(AuthContext);
+  const { companyName, name, role, logout, userId } = useContext(AuthContext);
   const audioRef = useRef(null);
   const navigate = useNavigate();
-  const user_id = localStorage.getItem("userId");
   const displayName = role === 'headhunter' ? companyName : name;
 
   const handleClick = (e) => {
@@ -21,12 +20,13 @@ const Header = (props) => {
     navigate('/');
   };
 
+
   const handleUserClick = () => {
     if (displayName) {
       if (role === 'headhunter') {
-        navigate('/CreateOffer');
+        navigate('/HeadHunterDashboard');
       } else {
-        navigate(`/UserDashboard/${user_id}`);
+        navigate(`/UserDashboard`);
       }
     } else {
       FooterTransition("Login");

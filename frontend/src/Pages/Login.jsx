@@ -11,16 +11,16 @@ const Login = () => {
 
   /************************************  use effect used to resolve overflow conflict  ************************************************************/
   useEffect(() => {
-        const htmlElement = document.documentElement;
-        htmlElement.style.margin = "0";
-        htmlElement.style.overflow = "hidden";
+    const htmlElement = document.documentElement;
+    htmlElement.style.margin = "0";
+    htmlElement.style.overflow = "hidden";
 
- 
-        return () => {
-            htmlElement.style.margin = "";
-            htmlElement.style.overflow = "";
-        };
-    }, []);
+
+    return () => {
+      htmlElement.style.margin = "";
+      htmlElement.style.overflow = "";
+    };
+  }, []);
 
 
   const [email, setEmail] = useState("");
@@ -47,7 +47,6 @@ const Login = () => {
       if (!token || !role || !name) {
         throw new Error('Données manquantes dans la réponse API');
       }
-
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
       localStorage.setItem("userId", userId);
@@ -63,7 +62,6 @@ const Login = () => {
         navigate('/CreateOffer');
       } else {
         navigate(`/emploi`);
-
         // navigate(`/emploi/${userId}`);
       }
 

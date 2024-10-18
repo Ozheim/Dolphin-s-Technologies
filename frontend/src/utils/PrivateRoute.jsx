@@ -8,7 +8,6 @@ const PrivateRoute = ({ children, roleRequired }) => {
     if (!token) {
         return <Navigate to="/Login" />;
     }
-
     if (role !== roleRequired) {
         console.log(`Accès refusé. Vous n'êtes pas un ${roleRequired}.`);
         return <Navigate to="/" />;

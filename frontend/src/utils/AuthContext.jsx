@@ -6,26 +6,32 @@ export const AuthProvider = ({ children }) => {
     const [companyName, setCompanyName] = useState(null);
     const [name, setName] = useState(null);
     const [role, setRole] = useState(null);
+    const [userId, setUserId] = useState(null);
+    const [hunterId, setHunterId] = useState(null);
 
     useEffect(() => {
         const storedCompanyName = localStorage.getItem('companyName');
         const storedName = localStorage.getItem('name');
         const storedRole = localStorage.getItem('role');
+        const storedUserId = localStorage.getItem('id');
+        const storedHunterId = localStorage.getItem('hunter_id');
 
-        if (storedCompanyName) {
+        if (storedCompanyName)
             setCompanyName(storedCompanyName);
-        }
-        if (storedName) {
+        if (storedName)
             setName(storedName);
-        }
-        if (storedRole) {
+        if (storedRole)
             setRole(storedRole);
-        }
+        if (storedUserId)
+            setRole(storedUserId);
+        if (storedHunterId)
+            setRole(storedHunterId);
     }, []);
 
     const logout = () => {
         setCompanyName(null);
         setName(null);
+        setUserId(null);
         setRole(null);
         localStorage.removeItem('companyName');
         localStorage.removeItem('name');
@@ -36,7 +42,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ companyName, setCompanyName, name, setName, role, setRole, logout }}>
+        <AuthContext.Provider value={{ companyName, setCompanyName, name, setName, role, setRole, userId, setUserId, hunterId, setHunterId, logout }}>
             {children}
         </AuthContext.Provider>
     );
