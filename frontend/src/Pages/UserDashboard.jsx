@@ -23,7 +23,7 @@ const UserDashboard = () => {
     <div>
       <div className="user_container">
         <span>Nom d'utilisateur</span>
-        <h2>{userId}</h2>
+        <p>{userId}</p>
         <span>Adresse e-mail</span>
         <p>{name}</p>
       </div>
