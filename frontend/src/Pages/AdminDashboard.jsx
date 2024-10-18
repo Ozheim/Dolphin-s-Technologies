@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import classNames from 'classnames';
+import "../Styles/Pages/AdminDashboard.scss"
+import Header from "../Component/Header.jsx";
+import { useLocation } from 'react-router-dom';
 
 const AdminDashboard = () => {
+    const location = useLocation();
+
     const [users, setUsers] = useState([]);
     const [hunters, sethunters] = useState([]);
 
@@ -72,56 +78,65 @@ const AdminDashboard = () => {
     if ((!users || users.length === 0) && (!hunters || hunters.length === 0)) {
         return <div>Chargement des utilisateurs et des headhunters...</div>;
     }
+    const isAdminPage = location.pathname === '/admin/dashboard';
+
 
     return (
         <div>
-            <h1>Tableau de Bord Admin</h1>
-            <h2>Utilisateurs</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Email</th>
-                        <th>Rôle</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map(user => (
-                        <tr key={user._id}>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td>{user.role}</td>
-                            <td>
-                                <button onClick={() => handleDeleteUser(user._id)}>Supprimer</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <h2>HeadHunters</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nom d'entreprise</th>
-                        <th>Email</th>
-                        <th>Créé à </th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {hunters.map(hunter => (
-                        <tr key={hunter._id}>
-                            <td>{hunter.companyName}</td>
-                            <td>{hunter.email}</td>
-                            <td>{hunter.createdAt}</td>
-                            <td>
-                                <button onClick={() => handleDeleteHunter(hunter._id)}>Supprimer</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <Header className={classNames({ 'header-black': isAdminPage, 'header': !isAdminPage })} />
+            <div className='admin-container'>
+                <h1>Tableau de Bord Admin</h1>
+                <div className='user-container'>
+                    <h2>Utilisateurs</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Rôle</th>
+                                <th>Supprimer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users.map(user => (
+                                <tr key={user._id}>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.role}</td>
+                                    <td>
+                                        <button onClick={() => handleDeleteUser(user._id)}>Supprimer</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+                <div className='hunter-container'>
+                    <h2>HeadHunters</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nom d'entreprise</th>
+                                <th>Email</th>
+                                <th>Créé à </th>
+                                <th>Supprimer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {hunters.map(hunter => (
+                                <tr key={hunter._id}>
+                                    <td>{hunter.companyName}</td>
+                                    <td>{hunter.email}</td>
+                                    <td>{hunter.createdAt}</td>
+                                    <td>
+                                        <button onClick={() => handleDeleteHunter(hunter._id)}>Supprimer</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     );
 };
