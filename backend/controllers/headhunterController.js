@@ -18,7 +18,7 @@ export const createHunter = async (req, res) => {
         await newHeadhunter.save();
         res.status(201).json({
             message: "Utilisateur créé avec succès",
-            headhunter : newHeadhunter
+            headhunter: newHeadhunter
         });
     } catch (error) {
         console.error("Erreur lors de la création de l'utilisateur:", error);
@@ -39,14 +39,15 @@ export const loginHunter = async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ message: 'Mot de passe incorrect' });
         }
+        console.log("JE SUIS UN " + headhunter.role)
 
         const huntertoken = jwt.sign(
             { id: headhunter._id, role: 'headhunter' },
             process.env.JWT_SECRET,
-            { expiresIn: '1h' }
+            { expiresIn: '2h' }
         );
-
-        res.json({ huntertoken, headhunter: { id: headhunter._id, name: headhunter.companyName, email: headhunter.email } });
+        res.json({ huntertoken, headhunter: { id: headhunter._id, companyName: headhunter.companyName, email: headhunter.email } });
+        console.log(headhunter.companyName);
     } catch (error) {
         res.status(500).json({ message: 'Erreur lors de la connexion', error });
     }

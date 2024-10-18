@@ -17,6 +17,10 @@ const headhunterSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    role: {
+        type: String,
+        default: "headhunter",
+    },
     createdAt: {
         type: Date,
         default: Date.now,

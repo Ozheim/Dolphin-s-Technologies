@@ -1,16 +1,10 @@
 import "../Styles/Pages/Home.scss";
 import Header from "../Component/Header.jsx"
 import Footer from "../Component/Footer.jsx";
-
-
-
 import React, { useEffect, useState } from 'react';
 import "../Styles/Components/JobsList.scss";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-
-
-
 
 const Home = () => {
 
@@ -37,9 +31,7 @@ const Home = () => {
         <Link to="/emploi">
           <p id="plus-button">Voir plus !</p>
         </Link>
-
       </div>
-
       <Footer />
     </div>
   );

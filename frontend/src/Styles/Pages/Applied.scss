@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f2f5; 
+  background-color: #f0f2f5;
 }
 
 .message {
@@ -13,7 +13,7 @@
   background-color: white;
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  border-top: 5px solid #6EA0F9; 
+  border-top: 5px solid #6EA0F9;
   text-align: center;
   width: 45%;
   max-width: 750px;
@@ -25,7 +25,7 @@
     color: #3F4D5E;
     margin-bottom: 1.5rem;
     font-weight: 600;
-    line-height: 1.4; 
+    line-height: 1.4;
   }
 
   p {
@@ -37,7 +37,7 @@
 
   button {
     background-color: #6EA0F9;
-    color: white; 
+    color: white;
     border-radius: 25px;
     padding: 12px 30px;
     @include font-size(1rem);
@@ -47,7 +47,7 @@
 
     &:hover {
       background-color: lighten(#6EA0F9, 10%); // lighten est une fonction sass qui permet d'ajouter du blanc en % 
-      transform: translateY(-2px); 
+      transform: translateY(-2px);
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     }
   }
@@ -58,6 +58,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

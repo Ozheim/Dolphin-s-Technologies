@@ -27,8 +27,6 @@ const SigninHeadHunter = () => {
     catch (error) {
       console.log("mes erreurs: ", error)
     }
-
-
   }
 
   const isSigninHeadHunter = location.pathname === "/signinHeadHunter";
