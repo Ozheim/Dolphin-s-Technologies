@@ -13,7 +13,7 @@ const Header = (props) => {
   const { companyName, name, role, logout } = useContext(AuthContext);
   const audioRef = useRef(null);
   const navigate = useNavigate();
-
+  const user_id = localStorage.getItem("userId");
   const displayName = role === 'headhunter' ? companyName : name;
 
   const handleClick = (e) => {
@@ -26,7 +26,7 @@ const Header = (props) => {
       if (role === 'headhunter') {
         navigate('/CreateOffer');
       } else {
-        navigate('/UserDashboard');
+        navigate(`/UserDashboard/${user_id}`);
       }
     } else {
       FooterTransition("Login");
