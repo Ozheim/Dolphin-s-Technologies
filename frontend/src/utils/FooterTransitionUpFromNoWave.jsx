@@ -1,8 +1,11 @@
-import "../Styles/Components/FooterTransition.scss";
-
-function FooterTransition(path) {
+function FooterTransitionNoWave(path) {
     const oceanElement = document.querySelector('.ocean');
-    
+    const footer = document.querySelector(".footerOnJobPages");
+
+    if (footer) {
+        footer.classList.remove('hidden-footer'); 
+    }
+
     if (oceanElement) {
         oceanElement.classList.remove('wave-up', 'down');
         oceanElement.classList.add('wave-up');
@@ -14,5 +17,4 @@ function FooterTransition(path) {
     }
 }
 
-export default FooterTransition;
-
+export default FooterTransitionNoWave;

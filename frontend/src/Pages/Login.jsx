@@ -7,6 +7,21 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+  /************************************  use effect used to resolve overflow conflict  ************************************************************/
+  useEffect(() => {
+        const htmlElement = document.documentElement;
+        htmlElement.style.margin = "0";
+        htmlElement.style.overflow = "hidden";
+
+ 
+        return () => {
+            htmlElement.style.margin = "";
+            htmlElement.style.overflow = "";
+        };
+    }, []);
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

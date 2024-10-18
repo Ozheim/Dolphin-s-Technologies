@@ -3,10 +3,23 @@ import Header from "../Component/Header";
 import Footer from "../Component/Footer";
 import classNames from 'classnames';
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 
 const SigninHeadHunter = () => {
+
+  
+ useEffect(() => {
+        const htmlElement = document.documentElement;
+        htmlElement.style.margin = "0";
+        htmlElement.style.overflow = "hidden";
+
+ 
+        return () => {
+            htmlElement.style.margin = "";
+            htmlElement.style.overflow = "";
+        };
+    }, []);
   const [companyName, setCompanyName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();

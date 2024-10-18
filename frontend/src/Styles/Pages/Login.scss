@@ -1,11 +1,11 @@
 @import "../mixins.scss";
 
-html,
-body {
+html,body{
     margin: 0;
 }
 
 .container {
+
     height: 100vh;
     width: 100%;
     display: flex;

@@ -10,6 +10,20 @@ import "../Styles/Pages/HeadHunter.scss";
 import axios from "axios";
 
 const HeadHunter = () => {
+
+ useEffect(() => {
+        const htmlElement = document.documentElement;
+        htmlElement.style.margin = "0";
+        htmlElement.style.overflow = "hidden";
+
+ 
+        return () => {
+            htmlElement.style.margin = "";
+            htmlElement.style.overflow = "";
+        };
+    }, []);
+
+
   const navigate = useNavigate();
 
   const location = useLocation();
