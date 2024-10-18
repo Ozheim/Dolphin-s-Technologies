@@ -1,0 +1,147 @@
+@import "../mixins.scss";
+
+html,body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9f9f9;
+}
+
+
+.apply-job-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0;
+    height: 100vh;
+    
+}
+
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    padding-top: 5%
+
+;
+
+
+    form{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        gap: 1%;
+    }
+
+    label{
+        margin: 2% 0 2% 0 ;
+        @include font-size(1.1rem)
+    }
+    div{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    input{
+        height: 4vh;
+        border-radius: 7px;
+        border: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        @include font-size(1rem);
+
+        
+    }
+
+    input:focus{
+        border: none;
+        transform: scale(1.03);
+        transition: 0.3s ease;
+    }
+
+    #submit-button-applyPage{
+        background-color: rgb(192, 182, 182);
+        margin-top: 2%;
+        padding: 10px;
+        border-radius: 5px;    
+    
+    }
+
+    #submit-button-applyPage:hover{
+        background-color: #6EA0F9;
+        cursor: pointer;
+        transform: scale(1.01);
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+}
+
+/******************************** Right ***********************************/
+
+.job-main{
+    display: flex;
+    width:50%;
+    margin-right: 1%;
+    background-color: #f3eeee;
+    margin: 0;
+    justify-content: center;
+
+
+
+    .job-card-apply-page{
+        padding-left: 3%;
+
+        width: 80%;
+        margin-top: 8%;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        background-color: white;
+        height: 70vh;
+        
+        #location-job{
+            display: flex;
+            gap: 5px;
+            border-radius: 5px;
+            background-color: #6EA0F9;
+            min-width: 22%;
+            max-width: 32%;
+            padding: 5px;
+            color: white;
+            justify-content: center;
+        }
+
+        #salary-job{
+            display: flex;
+            gap: 5px;
+            text-decoration: underline;
+            color: #3F4D5E;
+            align-items: center;
+        }
+
+        p{
+            width: 90%;
+        
+        }
+
+        #job-type{
+            display: flex;
+            color: #3F4D5E;
+            gap: 5px;
+            align-items: center;
+        }
+
+  
+
+        #description-job{
+            @include font-size(1.2rem);
+
+        }
+    
+        #requirements-job{
+           @include font-size(1.1rem);
+   
+        }
+    }
+
+}
+

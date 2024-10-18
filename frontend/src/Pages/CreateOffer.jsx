@@ -5,7 +5,7 @@ import Footer from "../Component/Footer";
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import FooterTransitionDown from "../utils/FooterTransitonDown";
-import "../Styles/Pages/Login.scss";
+import "../Styles/Pages/CreateOffer.scss";
 
 const CreateOffer = () => {
     const [title, setTitle] = useState('');
@@ -59,49 +59,53 @@ const CreateOffer = () => {
     return (
         <div>
             <Header className={classNames({ 'header-red': isHeadhunterPage, 'header': !isHeadhunterPage })} />
-            <div className="container">
-                <form onSubmit={Offer}>
-                    <h1>Créer une offre</h1>
-                    <div className="title">
-                        <label htmlFor="offerTitle">Titre de l'offre</label>
-                        <input type="text" id="offerTitle" name="offerTitle" onChange={(e) => setTitle(e.target.value)} />
+            <div className="container2">
+                <form className="form"onSubmit={Offer}>
+                <h1>Créer une offre</h1>
+                    <div className="left">
+                        <div className="title">
+                            <label htmlFor="offerTitle">Titre de l'offre</label>
+                            <input type="text" id="offerTitle" name="offerTitle" onChange={(e) => setTitle(e.target.value)} />
+                        </div>
+                        <div className="company">
+                            <label htmlFor="offerCompany">Entreprise</label>
+                            <input type="text" id="offerCompany" name="offerCompany" onChange={(e) => setCompany(e.target.value)} />
+                        </div>
+                        <div className="location">
+                            <label htmlFor="offerLocation">Localisation</label>
+                            <input type="text" id="offerLocation" name="offerLocation" onChange={(e) => setLocation(e.target.value)} />
+                        </div>
+                        <div className="salary">
+                            <label htmlFor="offerSalary">Salaire</label>
+                            <input type="text" id="offerSalary" name="offerSalary" onChange={(e) => setSalary(e.target.value)} />
+                        </div>
+                        <div className="jobType">
+                            <label htmlFor="offerJobType">Type de contrat</label>
+                            <select id="offerJobType" name="offerJobType" onChange={(e) => setJobType(e.target.value)}>
+                                <option value="Full-time">Temps plein</option>
+                                <option value="Part-time">Temps partiel</option>
+                                <option value="Contract">Contractuel</option>
+                                <option value="Internship">Stage</option>
+                            </select>
+                        </div>
                     </div>
-                    <div className="company">
-                        <label htmlFor="offerCompany">Entreprise</label>
-                        <input type="text" id="offerCompany" name="offerCompany" onChange={(e) => setCompany(e.target.value)} />
-                    </div>
-                    <div className="location">
-                        <label htmlFor="offerLocation">Localisation</label>
-                        <input type="text" id="offerLocation" name="offerLocation" onChange={(e) => setLocation(e.target.value)} />
-                    </div>
-                    <div className="salary">
-                        <label htmlFor="offerSalary">Salaire</label>
-                        <input type="text" id="offerSalary" name="offerSalary" onChange={(e) => setSalary(e.target.value)} />
-                    </div>
+                   <div className="right">
                     <div className="description">
-                        <label htmlFor="offerDescription">Description</label>
-                        <textarea id="offerDescription" name="offerDescription" onChange={(e) => setDescription(e.target.value)} />
-                    </div>
-                    <div className="requirements">
-                        <label htmlFor="offerRequirements">Exigences (séparées par des virgules)</label>
-                        <textarea id="offerRequirements" name="offerRequirements" onChange={(e) => setRequirements(e.target.value)} />
-                    </div>
-                    <div className="jobType">
-                        <label htmlFor="offerJobType">Type de contrat</label>
-                        <select id="offerJobType" name="offerJobType" onChange={(e) => setJobType(e.target.value)}>
-                            <option value="Full-time">Temps plein</option>
-                            <option value="Part-time">Temps partiel</option>
-                            <option value="Contract">Contractuel</option>
-                            <option value="Internship">Stage</option>
-                        </select>
-                    </div>
-                    <div className="applyLink">
-                        <label htmlFor="offerApplyLink">Lien de postulation</label>
-                        <input type="text" id="offerApplyLink" name="offerApplyLink" onChange={(e) => setApplyLink(e.target.value)} />
-                    </div>
-                    <button type="submit">GO !</button>
+                            <label htmlFor="offerDescription">Description</label>
+                            <textarea id="offerDescription" name="offerDescription" onChange={(e) => setDescription(e.target.value)} />
+                        </div>
+                        <div className="requirements">
+                            <label htmlFor="offerRequirements">Exigences </label>
+                            <textarea id="offerRequirements" name="offerRequirements" placeholder="séparées par des virgules" onChange={(e) => setRequirements(e.target.value)} />
+                        </div>
+                        <div className="applyLink">
+                            <label htmlFor="offerApplyLink">Postuler sur un site externe </label>
+                            <input type="text" id="offerApplyLink" name="offerApplyLink" onChange={(e) => setApplyLink(e.target.value)} />
+                        </div>
+                   </div>
+                   <button type="submit">GO !</button>
                 </form>
-            </div>
+          </div>
             <Footer className={classNames({ 'ocean-red': isHeadhunterPage, 'ocean': !isHeadhunterPage })} isHeadhunterPage={isHeadhunterPage} />
 
         </div>
