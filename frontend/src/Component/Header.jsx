@@ -24,12 +24,12 @@ const Header = (props) => {
   const handleUserClick = () => {
     if (displayName) {
       if (role === 'headhunter') {
-        navigate('/HeadHunterDashboard');
+        navigate('/HeadHunterDashBoard');
       } else {
-        navigate(`/UserDashboard`);
+        FooterTransition("UserDashboard", navigate);
       }
     } else {
-      FooterTransition("Login");
+      FooterTransition("Login", navigate);
     }
   };
 
@@ -48,13 +48,22 @@ const Header = (props) => {
           <audio ref={audioRef} src={soundFile} />
         </div>
         <ul>
-          <button className="header-list" onClick={() => FooterTransition("HeadHunter")}>
-            Accès recruteur
-          </button>
-          <button className="header-list" onClick={() => FooterTransition("Emploi")}>
+          {role !== 'headhunter' ? (
+            <>
+              <button className="header-list" onClick={() => FooterTransition("HeadHunter", navigate)}>
+                Accès recruteur
+              </button>
+            </>
+          ) : (
+            <div></div>
+          )}
+
+          <button className="header-list" onClick={() => FooterTransition("Emploi", navigate)}>
             Emploi
           </button>
           {/* on affiche le name et la deconnection si le user est logged, sinon connexion */}
+
+
           {displayName ? (
             <>
               <button className="connexion-link" onClick={handleUserClick}>
