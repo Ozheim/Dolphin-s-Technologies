@@ -42,7 +42,8 @@ const Login = () => {
       } else if (role === 'headhunter') {
         navigate('/CreateOffer');
       } else {
-        navigate(`/emploi/${userId}`);
+        navigate(`/emploi`);
+        // navigate(`/emploi/${userId}`);
       }
 
       console.log("Utilisateur connecté", role);

@@ -34,13 +34,13 @@ const HeadHunter = () => {
       localStorage.setItem("role", 'headhunter');
 
       console.log("Connexion réussie, token reçu :", huntertoken);
-      navigate('/CreateOffer');
+      navigate('/HeadHunterDashBoard');
     } catch (error) {
       console.error("Erreur lors de la connexion :", error);
     }
   };
 
-  const isHeadhunterPage = location.pathname === '/HeadHunter' || location.pathname === "/CreateOffer";
+  const isHeadhunterPage = location.pathname === '/HeadHunter' || location.pathname === "/DashBoardHeadHunter";
 
 
   return (

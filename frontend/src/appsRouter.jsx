@@ -12,6 +12,7 @@ import Emploi from "./Pages/emploi.jsx";
 import ApplyPage from "./Pages/ApplyPage.jsx";
 import PrivateRoute from './utils/PrivateRoute.jsx';
 import Applied from "./Pages/Applied.jsx";
+import HeadHunterDashBoard from './Pages/HeadHunterDashboard.jsx';
 
 const AppRouter = () => {
     return (
@@ -23,10 +24,10 @@ const AppRouter = () => {
             <Route path="/SignIn" element={<SignIn />} />
             <Route path="*" element={<Notfound />} />
             <Route path="/HeadHunter" element={<HeadHunter />} />
+            <Route path="/HeadHunterDashBoard" element={<HeadHunterDashBoard />} />
             <Route path="/UserDashBoard" element={< UserDashboard />} />
             <Route path="/signinHeadHunter" element={<SigninHeadHunter />} />
             <Route path="/Emploi" element={<Emploi />} />
-
             <Route path="/ApplyPage" element={<ApplyPage/>}/>
             <Route path="/Applied"   element={<Applied />}/>
             <Route

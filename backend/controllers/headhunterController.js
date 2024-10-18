@@ -82,3 +82,18 @@ export const deleteHunter = async (req, res) => {
         res.status(500).json({ message: "Erreur lors de la suppression de l'Headhunter", error });
     }
 };
+
+export const findHunter = async (req, res) => {
+    try{
+        const { id } = req.params;  
+        const hunter = await Headhunter.findById(id);  
+
+        if (!hunter) {
+            return res.status(404).json({ message: 'Headhunter non trouvé.' });
+        }
+        res.status(200).json({ message: "Headhunter trouvé" });
+    }
+    catch (error) {
+        res.status(500).json({ message: "Aucun hunter trouvé", error });
+}    
+}
