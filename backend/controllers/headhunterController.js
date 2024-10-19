@@ -47,7 +47,7 @@ export const loginHunter = async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: '2h' }
         );
-        res.json({ huntertoken, headhunter: { id: headhunter._id, companyName: headhunter.companyName, email: headhunter.email } });
+        res.json({ huntertoken, headhunter: { hunter_id: headhunter._id, companyName: headhunter.companyName, email: headhunter.email } });
         console.log(headhunter.companyName);
     } catch (error) {
         res.status(500).json({ message: 'Erreur lors de la connexion', error });

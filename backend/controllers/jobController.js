@@ -27,15 +27,22 @@ export const getAllJobOffers = async (req, res) => {
 export const getJobById = async (req, res) => {
   try {
     const jobId = req.params.id;
-    const getOneJob = await JobOffer.findOne({ _id: jobId });
 
+    if (!mongoose.Types.ObjectId.isValid(jobId)) {
+      return res.status(400).json({ error: "ID de job invalide." });
+    }
+
+    const getOneJob = await JobOffer.findById(jobId);
+
+   
     if (!getOneJob) {
-      return res.status(404).json({ error: "pas de job trouvé" });
+      return res.status(404).json({ error: "Pas de job trouvé." });
     }
 
     res.status(200).json(getOneJob);
   } catch (error) {
-    res.status(500).json({ error: "serveur hs" });
+
+    res.status(500).json({ error: "Erreur serveur." });
   }
 };
 
@@ -52,3 +59,5 @@ export const postJobOnApplyPage = async (req, res) => {
       .json({ message: "Erreur lors de la sauvegarde du formulaire", error });
   }
 };
+
+

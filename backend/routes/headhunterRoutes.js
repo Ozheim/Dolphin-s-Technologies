@@ -14,4 +14,5 @@ router.get("/allHunters", adminAuth, getAllHunters);
 router.post("/loginHunters", loginHunter);
 router.delete("/deletesHunters/:id", adminAuth, deleteHunter);
 
+
 export default router;

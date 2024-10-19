@@ -21,3 +21,21 @@ export const userDashboard = async (req, res) => {
     res.status(500).json({ message: "Erreur serveur.", error: error.message });
   }
 };
+export const hunterDashboard = async (req, res) => {
+  try {
+    const hunterId = req.params.id;
+
+    const hunter = await User.findById(hunterId).select("-password");
+
+    if (!hunter) {
+      return res.status(404).json({ message: "Hunter non trouvé." });
+    }
+
+    res.json({
+      id: hunter._id,
+      name: hunter.companyName,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Erreur serveur.", error: error.message });
+  }
+};

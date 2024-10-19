@@ -29,6 +29,7 @@ const HeadHunter = () => {
   const location = useLocation();
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
+  
 
   useEffect(() => {
     FooterTransitionDown();
@@ -42,6 +43,7 @@ const HeadHunter = () => {
         password,
       });
       const companyName = response.data.headhunter.companyName;
+
       setCompanyName(companyName);
       setRole('headhunter');
 
