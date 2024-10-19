@@ -1,5 +1,6 @@
 import JobOffer from "../models/job.js";
 import PostForm from "../models/postForm.js";
+import mongoose from "mongoose";
 
 export const createJobOffers = async (req, res) => {
   try {
@@ -27,21 +28,24 @@ export const getAllJobOffers = async (req, res) => {
 export const getJobById = async (req, res) => {
   try {
     const jobId = req.params.id;
+    console.log("Job ID reçu :", jobId);
 
     if (!mongoose.Types.ObjectId.isValid(jobId)) {
+      console.log("ID de job invalide.");
       return res.status(400).json({ error: "ID de job invalide." });
     }
 
     const getOneJob = await JobOffer.findById(jobId);
+    console.log("Résultat de la recherche :", getOneJob);
 
-   
     if (!getOneJob) {
+      console.log("Pas de job trouvé.");
       return res.status(404).json({ error: "Pas de job trouvé." });
     }
 
     res.status(200).json(getOneJob);
   } catch (error) {
-
+    console.error("Erreur dans getJobById :", error);
     res.status(500).json({ error: "Erreur serveur." });
   }
 };
@@ -59,5 +63,3 @@ export const postJobOnApplyPage = async (req, res) => {
       .json({ message: "Erreur lors de la sauvegarde du formulaire", error });
   }
 };
-
-

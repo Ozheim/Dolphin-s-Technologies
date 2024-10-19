@@ -1,40 +1,39 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from '../utils/AuthContext.jsx';
 import "../Styles/Pages/userdashboard.scss";
+import ParameterProfil from "../utils/parameterProfil.jsx";
+import UserApplication from "../utils/UserApplication.jsx";
 
 const UserDashboard = () => {
-  const { name, userId } = useContext(AuthContext);
-  const [users, setUsers] = useState([]);
-  console.log(userId);
+  const { name } = useContext(AuthContext);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/allUser")
-      .then(res => {
-        return res.json()
-      })
-      .then(data => {
-        setUsers(data);
-      })
-      .catch(error =>
-        console.error("Erreur lors de la récupération des données : ", error)
-      )
-  }, [])
   return (
-    <div>
-      <div className="user_container">
-        <div className="main-title">
-          <img src={""} alt="your picture"/>
-          <h1>bonjour {name}! Comment ca va? </h1>
+    <div className="dashboard-container">
+      <div className="sidebar">
+        <h2>Dashboard</h2>
+        <a href="#"><i className="fas fa-cog"></i> Paramètres</a>
+        <a href="#"><i className="fas fa-briefcase"></i> Mes Candidatures</a>
+        <a href="#"><i className="fas fa-sign-out-alt"></i> Déconnexion</a>
+      </div>
+      <div className="content">
+        <div className="header-Dashboard">
+          <div className="user-info">
+            <span className="hello">Bonjour {name}! comment ca va ?</span>
+          </div>
         </div>
-          <ul>
-            <li><button className="button-userDashboard">Paramètres</button></li>
-            <li><button className="button-userDashboard">Mes candidatures</button></li>
-          </ul>
+        <div className="card">
+          <h3>Bienvenue sur ton Dashboard</h3>
+          <p>C'est ici que tu peux gérer toutes tes candidatures et tes paramètres.</p>
         </div>
-        <div>
-            
-          
+        <div className="card">
+          <h3>Paramètres</h3>
+          <ParameterProfil/>
         </div>
+        <div className="card">
+          <h3>Mes candidatures:</h3>
+          <UserApplication/>  
+        </div>
+      </div>
     </div>
   );
 };

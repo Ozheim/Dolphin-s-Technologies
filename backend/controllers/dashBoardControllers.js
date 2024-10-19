@@ -2,7 +2,7 @@ import User from "../models/User.js";
 
 export const userDashboard = async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userId = req.params.userId;
 
     const user = await User.findById(userId).select("-password");
 
@@ -11,16 +11,14 @@ export const userDashboard = async (req, res) => {
     }
 
     res.json({
-      id: user._id,
       name: user.name,
       email: user.email,
-      role: user.role,
-      createdAt: user.createAt,
     });
   } catch (error) {
     res.status(500).json({ message: "Erreur serveur.", error: error.message });
   }
 };
+
 export const hunterDashboard = async (req, res) => {
   try {
     const hunterId = req.params.id;
