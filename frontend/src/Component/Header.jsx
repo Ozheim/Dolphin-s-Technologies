@@ -2,15 +2,15 @@ import React, { useRef, useContext } from 'react';
 import { AuthContext } from '../utils/AuthContext.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import classNames from 'classnames';
 import { useNavigate } from "react-router-dom";
-import Logo from '../assets/logo.png';
+import classNames from 'classnames';
+import Logo from "../assets/logo.png";
 import FooterTransition from '../utils/FooterTransition';
-import '../Styles/Components/Header.scss';
+import "../Styles/Components/Header.scss";
 import soundFile from '../assets/sound_effect.mp3';
 
 const Header = (props) => {
-  const { companyName, name, role, logout, userId } = useContext(AuthContext);
+  const { companyName, name, role, logout } = useContext(AuthContext);
   const audioRef = useRef(null);
   const navigate = useNavigate();
   const displayName = role === 'headhunter' ? companyName : name;
@@ -19,7 +19,6 @@ const Header = (props) => {
     e.preventDefault();
     navigate('/');
   };
-
 
   const handleUserClick = () => {
     if (displayName) {
@@ -61,8 +60,6 @@ const Header = (props) => {
           <button className="header-list" onClick={() => FooterTransition("Emploi", navigate)}>
             Emploi
           </button>
-          {/* on affiche le name et la deconnection si le user est logged, sinon connexion */}
-
 
           {displayName ? (
             <>
@@ -85,3 +82,4 @@ const Header = (props) => {
 };
 
 export default Header;
+

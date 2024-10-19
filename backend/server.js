@@ -18,6 +18,7 @@ const normalizePort = (val) => {
 const port = normalizePort(process.env.PORT || "5000");
 app.set("port", port);
 
+
 const errorHandler = (server, error) => {
   if (error.syscall !== "listen") {
     throw error;
@@ -53,6 +54,4 @@ server.on("listening", () => {
 app.get("/users", (req, res) => {
   res.json({ message: "Liste des utilisateurs" });
 })
-
-
 server.listen(port);

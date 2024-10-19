@@ -16,7 +16,6 @@ import HeadHunterDashBoard from './Pages/HeadHunterDashboard.jsx';
 
 const AppRouter = () => {
     return (
-
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
@@ -25,7 +24,7 @@ const AppRouter = () => {
             <Route path="*" element={<Notfound />} />
             <Route path="/HeadHunter" element={<HeadHunter />} />
             <Route path="/HeadHunterDashBoard" element={<HeadHunterDashBoard />} />
-            <Route path="/UserDashBoard" element={< UserDashboard />} />
+            <Route path="/UserDashBoard" element={<UserDashboard />} />
             <Route path="/signinHeadHunter" element={<SigninHeadHunter />} />
             <Route path="/Emploi" element={<Emploi />} />
             <Route
@@ -61,7 +60,8 @@ const AppRouter = () => {
                 }
             />
         </Routes>
-    )
+    );
 }
 
 export default AppRouter;
+

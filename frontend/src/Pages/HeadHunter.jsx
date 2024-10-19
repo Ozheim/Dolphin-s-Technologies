@@ -23,13 +23,11 @@ const HeadHunter = () => {
     };
   }, []);
 
-
   const navigate = useNavigate();
   const { setCompanyName, setRole } = useContext(AuthContext);
   const location = useLocation();
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
-  
 
   useEffect(() => {
     FooterTransitionDown();
@@ -53,7 +51,6 @@ const HeadHunter = () => {
       localStorage.setItem("role", 'headhunter');
       localStorage.setItem("companyName", companyName);
 
-
       console.log("Connexion réussie, token reçu :", huntertoken);
       navigate('/HeadHunterDashBoard');
     } catch (error) {
@@ -72,25 +69,21 @@ const HeadHunter = () => {
             <form action="">
               <h1>Connexion</h1>
               <div className="name">
-                <label for="userName">Nom d'utilisateur</label>
+                <label htmlFor="userName">Nom d'utilisateur</label>
                 <input type="text" id="userName" name="userName" onChange={(e) => setemail(e.target.value)} />
               </div>
               <div className="password">
-                <label for="userPassword">Mot de passe</label>
+                <label htmlFor="userPassword">Mot de passe</label>
                 <input type="password" id="userPassword" name="userPassword" onChange={(e) => setpassword(e.target.value)} />
-
-
               </div>
               <button type="submit" onClick={headHunterHired}>GO !</button>
               <p>
                 Vous n'avez pas encore de compte ? <a href="signinHeadHunter">Inscrivez-vous</a>
               </p>
-
             </form>
           </div>
         </div>
         <Footer className={classNames({ 'ocean-red': isHeadhunterPage, 'ocean': !isHeadhunterPage })} isHeadhunterPage={isHeadhunterPage} />
-
       </div>
     </div>
   );

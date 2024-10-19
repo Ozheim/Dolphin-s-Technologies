@@ -1,6 +1,8 @@
+
 import express from "express";
 import { createUser, login, getAllUsers, deleteUser } from "../controllers/userController.js";
 import { adminAuth } from "../middleware/auth.js";
+
 
 const router = express.Router();
 

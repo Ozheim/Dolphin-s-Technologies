@@ -1,5 +1,5 @@
 import "../Styles/Pages/Home.scss";
-import Header from "../Component/Header.jsx"
+import Header from "../Component/Header.jsx";
 import Footer from "../Component/Footer.jsx";
 import React, { useEffect, useState } from 'react';
 import "../Styles/Components/JobsList.scss";
@@ -7,7 +7,6 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-
   const [blog, setBlogs] = useState([]);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ const Home = () => {
     <div>
       <Header />
       <div className="opportunity-container">
-        <p>Bienvenue sur Dolphin Technologies !  </p>
+        <p>Bienvenue sur Dolphin Technologies !</p>
         <h1 className="h1-home">Notre job, vous aider à choisir le vôtre parmi {blog.length} offres</h1>
         <Link to="/emploi">
           <p id="plus-button">Voir plus !</p>

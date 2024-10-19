@@ -17,18 +17,20 @@ const Navigation = () => {
                 </div>
                 <div className="location-container">
                     <label htmlFor="location">Où?</label>
-
-                    <div className="caca"><GooglePlacesAutocomplete
-                        apiKey="AIzaSyBLQHEUDRQywbFjk2I0rEaC3tfNwo6r8Go"
-                        selectProps={{
-                            locationValue,
-                            onChange: setLocationValue,
-                            placeholder: "Ville, département, code postal"
-                        }}
-                    />
+                    <div className="caca">
+                        <GooglePlacesAutocomplete
+                            apiKey="AIzaSyBLQHEUDRQywbFjk2I0rEaC3tfNwo6r8Go"
+                            selectProps={{
+                                locationValue,
+                                onChange: setLocationValue,
+                                placeholder: "Ville, département, code postal"
+                            }}
+                        />
                     </div>
                 </div>
-                <button className="submit-button"><i><FontAwesomeIcon icon={faMagnifyingGlass} /></i></button>
+                <button className="submit-button">
+                    <i><FontAwesomeIcon icon={faMagnifyingGlass} /></i>
+                </button>
             </form>
         </div>
     );

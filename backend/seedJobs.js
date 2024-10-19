@@ -192,3 +192,7 @@ mongoose.connect("mongodb://localhost:27017/job_board", { useNewUrlParser: true,
         console.error("Error inserting job offers: ", err);
         mongoose.disconnect();
     });
+
+
+    // http://localhost:5000/api/users
+    // http://localhost:5000/api/jobs
