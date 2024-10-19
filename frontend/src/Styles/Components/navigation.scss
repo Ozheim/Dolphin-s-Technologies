@@ -1,93 +1,97 @@
 @import "../mixins.scss";
 
 
-body {
-    overflow: visible !important;
-}
+<<<<<<< HEAD
+=======
 
-.nav-bar{
+>>>>>>> 8e89d64c8519150598b09391b42593ff25ddc634
+.nav-bar {
     display: flex;
     width: 100%;
     justify-content: center;
     margin-top: 3%;
-    
-    
 
-    form{
+
+
+    form {
         display: flex;
         width: 30%;
-        justify-content: center;    
+        justify-content: center;
         @include font-primary(1rem, 400);
-        
-    label{
-        margin-bottom: 10%;
+
+        label {
+            margin-bottom: 10%;
+
+        }
+
+        input {
+            border: none;
+            background-color: #6EA0F94F;
+            padding: 5%;
+            border-radius: 10px;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
+        }
 
     }
-    input{
-        border: none;   
-        background-color: #6EA0F94F;
-        padding: 5%;
-        border-radius: 10px;
-    }   
-    input:focus{
-        outline: none;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
 
-    }
-    
+
+    .job-container,
+    .location-container {
+        border: 1px solid rgba(0, 128, 128, 0.322);
+        padding: 4%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
-
-.job-container, .location-container{
-    border: 1px solid rgba(0, 128, 128, 0.322);
-    padding: 4%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-
-.job-container{
-        border-radius: 10px 0  0 10px; 
+    .job-container {
+        border-radius: 10px 0 0 10px;
         border-right: 1px solid rgba(0, 128, 128, 0.322);
-        
 
-        
-}
-
-.location-container{
-        border-left: none; 
-}
-
-
-
-.submit-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0 10px  10px 0;
-    border-left: none;
-    border: none;
-    padding: 30px;
-    border: 1px solid rgba(0, 128, 128, 0.322);
-    border-left: none;
-    i{
-       font-size: 1rem;
-       border: 1px solid black;
-       padding: 50%;
-       border-radius: 50%;
-       background-color: black;
-       color: white ;
-    };
-
-    i:hover{
-        transform: scale(1.2);
-        transition: 0.3s ease;
     }
-}
+
+    .location-container {
+        border-left: none;
+
+    }
+
+
+    .job-container {
+        position: relative;
+        border-radius: 10px 0 0 10px;
+        border-right: 1px solid rgba(0, 128, 128, 0.322);
+    }
+
+    .submit-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0 10px 10px 0;
+        border-left: none;
+        border: none;
+        padding: 30px;
+        border: 1px solid rgba(0, 128, 128, 0.322);
+        border-left: none;
+
+        i {
+            font-size: 1rem;
+            border: 1px solid black;
+            padding: 50%;
+            border-radius: 50%;
+            background-color: black;
+            color: white;
+        }
+
+        ;
+
+        i:hover {
+            transform: scale(1.2);
+            transition: 0.3s ease;
+        }
+    }
 
 }
-
-
- 
-

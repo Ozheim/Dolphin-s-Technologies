@@ -1,15 +1,19 @@
 import "../Styles/Components/FooterTransition.scss";
 
+function FooterTransition(path, navigate) {
+    const oceanElement = document.querySelector('.ocean');
 
-function FooterTransition (path) {
+    if (oceanElement) {
+        oceanElement.classList.remove('wave-up', 'down');
+        oceanElement.classList.add('wave-up');
 
-        const oceanElement = document.querySelector('.ocean');
-        oceanElement.classList.add('lol');
-        if (oceanElement) {
-            setTimeout(() => {
-                window.location.pathname = "/" + path
-            }, 800);
-        }
+        setTimeout(() => {
+            oceanElement.classList.remove('wave-up');
+            navigate("/" + path)
+        }, 800);
+    }
 }
+
 export default FooterTransition;
+
 

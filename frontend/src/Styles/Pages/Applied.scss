@@ -1,0 +1,66 @@
+@import "../mixins.scss";
+
+.applied-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.message {
+  padding: 3rem 2rem;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border-top: 5px solid #6EA0F9;
+  text-align: center;
+  width: 45%;
+  max-width: 750px;
+  margin: 0 auto;
+  animation: smoothSpawn 0.6s ease-in-out;
+
+  h1 {
+    font-size: 2rem;
+    color: #3F4D5E;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  p {
+    @include font-size(1.1rem);
+    color: #6EA0F9;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  button {
+    background-color: #6EA0F9;
+    color: white;
+    border-radius: 25px;
+    padding: 12px 30px;
+    @include font-size(1rem);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background-color: lighten(#6EA0F9, 10%); // lighten est une fonction sass qui permet d'ajouter du blanc en % 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+@keyframes smoothSpawn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

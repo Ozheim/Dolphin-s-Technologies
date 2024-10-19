@@ -8,9 +8,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 2%;
         border-radius: 5%;
-        padding: 3%;
         box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; 
 
         h1{
@@ -30,8 +28,8 @@
             }
             input{
              border: none;
+             background-color: transparent;
              border-bottom: 1px solid black;
-             border-right: 1px solid black;
              margin-top: 10%;
              width : 100%;
              @include font-primary(1rem, 500);
@@ -40,13 +38,18 @@
 
          }
 
-         .checko{
+         .check-input{
             display: flex;
-            justify-content: space-evenly;
+            justify-content: center;
+            gap: 5px;
             align-items: center;
-            @include font-primary(1rem, 500);
+            @include font-primary(1rem, 400);
             width : 110%;
             margin-top: 5%;
+         }
+
+         span{
+            @include font-primary(1rem, 200);
          }
          button{
              margin-top: 10%;

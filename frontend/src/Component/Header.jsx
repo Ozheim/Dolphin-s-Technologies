@@ -1,56 +1,80 @@
-<<<<<<< HEAD
-
-import Logo from "../assets/logo.png";
-import "../Styles/Components/Header.scss";
+import React, { useRef, useContext } from 'react';
+import { AuthContext } from '../utils/AuthContext.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-
-
-const Header = () => {
-
-    return (
-        <div className="header-container">
-            <div className="header">
-                <div>
-                    <a href="../Home"><img src={Logo} alt="logo" className="logo" /></a>
-                </div>
-                <ul>
-                    <li><a href="../HeadHunter" className="header-list">Accès recruteur</a></li>
-                    <li><a href="../emploi" className="header-list">Emploi</a></li>
-                    <li><a href="../Login" className="connexion-link"><FontAwesomeIcon icon={faUser} />Connexion</a></li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-export default Header;
-=======
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from "react-router-dom";
 import classNames from 'classnames';
-import Logo from '../assets/logo.png';
+import Logo from "../assets/logo.png";
 import FooterTransition from '../utils/FooterTransition';
-import '../Styles/Components/Header.scss';
+import "../Styles/Components/Header.scss";
+import soundFile from '../assets/sound_effect.mp3';
 
 const Header = (props) => {
+  const { companyName, name, role, logout } = useContext(AuthContext);
+  const audioRef = useRef(null);
+  const navigate = useNavigate();
+  const displayName = role === 'headhunter' ? companyName : name;
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate('/');
+  };
+
+  const handleUserClick = () => {
+    if (displayName) {
+      if (role === 'headhunter') {
+        navigate('/HeadHunterDashBoard');
+      } else {
+        FooterTransition("UserDashboard", navigate);
+      }
+    } else {
+      FooterTransition("Login", navigate);
+    }
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <div className="header-container">
       <div className={classNames('header', props.className)} style={props.style}>
         <div>
-          <img src={Logo} alt="logo" className="logo" />
+          <a href="/" onClick={handleClick}>
+            <img src={Logo} alt="logo" className="logo" />
+          </a>
+          <audio ref={audioRef} src={soundFile} />
         </div>
         <ul>
-          <button className="header-list" onClick={() => FooterTransition("HeadHunter")}>
-            Accès recruteur
-          </button>
-          <button className="header-list" onClick={() => FooterTransition("Home")}>
+          {role !== 'headhunter' ? (
+            <>
+              <button className="header-list" onClick={() => FooterTransition("HeadHunter", navigate)}>
+                Accès recruteur
+              </button>
+            </>
+          ) : (
+            <div></div>
+          )}
+
+          <button className="header-list" onClick={() => FooterTransition("Emploi", navigate)}>
             Emploi
           </button>
-          <button className="connexion-link" onClick={() => FooterTransition("Login")}>
-            <FontAwesomeIcon icon={faUser} /> Connexion
-          </button>
+
+          {displayName ? (
+            <>
+              <button className="connexion-link" onClick={handleUserClick}>
+                <FontAwesomeIcon icon={faUser} /> {displayName}
+              </button>
+              <button className="logout-link" onClick={handleLogout}>
+                Déconnexion
+              </button>
+            </>
+          ) : (
+            <button className="connexion-link" onClick={handleUserClick}>
+              <FontAwesomeIcon icon={faUser} /> Connexion
+            </button>
+          )}
         </ul>
       </div>
     </div>
@@ -58,4 +82,4 @@ const Header = (props) => {
 };
 
 export default Header;
->>>>>>> 8213e2af8e9ed9b0dd0612d3ba782ce2819e518e
+
