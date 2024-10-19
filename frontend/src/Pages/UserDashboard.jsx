@@ -22,11 +22,19 @@ const UserDashboard = () => {
   return (
     <div>
       <div className="user_container">
-        <span>Nom d'utilisateur</span>
-        <h2>{userId}</h2>
-        <span>Adresse e-mail</span>
-        <p>{name}</p>
-      </div>
+        <div className="main-title">
+          <img src={""} alt="your picture"/>
+          <h1>bonjour {name}! Comment ca va? </h1>
+        </div>
+          <ul>
+            <li><button className="button-userDashboard">Paramètres</button></li>
+            <li><button className="button-userDashboard">Mes candidatures</button></li>
+          </ul>
+        </div>
+        <div>
+            
+          
+        </div>
     </div>
   );
 };
