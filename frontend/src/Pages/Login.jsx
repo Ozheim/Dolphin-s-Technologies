@@ -51,6 +51,7 @@ const Login = () => {
       localStorage.setItem("role", role);
       localStorage.setItem("userId", userId);
       localStorage.setItem("name", name);
+      localStorage.setItem("email", email);
 
       // Mettre à jour le contexte
       setName(name);

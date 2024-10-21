@@ -58,7 +58,6 @@ const Header = (props) => {
               Créer une offre
             </button>
           )}
-
           <button className="header-list" onClick={() => FooterTransition("Emploi", navigate)}>
             Emploi
           </button>

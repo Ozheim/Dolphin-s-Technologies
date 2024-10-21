@@ -1,30 +1,41 @@
-import React, { useState, useEffect,useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../utils/AuthContext.jsx';
 import axios from "axios";
 
-const parameterProfil = () => { 
-    const [userInfo, setUserInfo] = useState();
-    const UserId = localStorage.getItem('userId'); 
+const ParameterProfil = () => {
+    const [users, setUsers] = useState([]);
+    const UserId = localStorage.getItem('userId');
+    const { name, email } = useContext(AuthContext);
+    console.log(UserId);
 
     useEffect(() => {
         const fetchParams = async () => {
             try {
-               const response=  axios.get(`http://localhost:5000/api/users/${UserId}`);
-                setUserInfo(response.data);
-                console.log(response.data);
-            } catch (error) {
+                const token = localStorage.getItem("token");
+
+                const resUsers = await axios.get(`http://localhost:5000/api/users/${UserId}`, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+                console.log('Réponse API :', resUsers.data);
+                if (resUsers.data) {
+                    setUsers(resUsers.data);
+                }
+            }
+            catch (error) {
                 console.log("Erreur lors de la récupération ", error);
             }
         };
-       
-            fetchParams();
-    }, []);
-    
+
+        fetchParams();
+    }, [UserId]);
     return (
         <div>
-            {userInfo ? (
+            {name ? (
                 <div>
-                    
-                    <h1>{userInfo.name}</h1>
+                    <p>{users.name}</p>
+                    <p>{users.email}</p>
                 </div>
             ) : (
                 <p>Chargement...</p>
@@ -33,6 +44,4 @@ const parameterProfil = () => {
     );
 };
 
-
-
-export default parameterProfil;
+export default ParameterProfil;

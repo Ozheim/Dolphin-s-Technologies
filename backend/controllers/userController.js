@@ -52,8 +52,9 @@ export const login = async (req, res) => {
     );
     console.log("LE TOKEN TIME :", tokenTime);
     console.log(" :", tokenTime);
+    console.log(" :", user._id);
 
-    res.json({ token, userId: user._id, role: user.role, name: user.name });
+    res.json({ token, userId: user._id, role: user.role, name: user.name, email: user.email });
   } catch (error) {
     res.status(500).json({ message: "Erreur lors de la connexion", error });
   }
