@@ -37,3 +37,9 @@ export const headhunterAuth = (req, res, next) => {
         next();
     });
 };
+
+export const getUserId = (req) => {
+    const rawToken = (req.headers["authorization"].split(' ')[1])
+    const token = jwt.decode(rawToken);
+    return token["id"];
+};

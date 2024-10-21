@@ -39,6 +39,9 @@ const jobOfferSchema = new mongoose.Schema(
     applyLink: {
       type: String,
     },
+    hunterId: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

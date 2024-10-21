@@ -23,7 +23,7 @@ const Header = (props) => {
   const handleUserClick = () => {
     if (displayName) {
       if (role === 'headhunter') {
-        navigate('/HeadHunterDashBoard');
+        navigate('/HeadHunterDashboard');
       } else {
         FooterTransition("UserDashboard", navigate);
       }

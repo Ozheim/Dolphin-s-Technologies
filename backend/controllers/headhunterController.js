@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import Headhunter from "../models/headhunter.js";
+import JobOffer from "../models/job.js";
+import { getUserId } from "../middleware/auth.js";
 
 export const createHunter = async (req, res) => {
   try {
@@ -92,3 +94,39 @@ export const deleteHunter = async (req, res) => {
   }
 };
 
+export const getOffers = async (req, res) => {
+  try {
+    const hunterId = getUserId(req);
+    const offers = await JobOffer.find({"hunterId": hunterId});
+
+    if (offers.length === 0) {
+      return res.status(404).json({ message: "Aucun hunter trouvé" });
+    }
+    res.status(200).json(offers);
+  } catch (error) {
+    console.error("Erreur lors de la récupération des hunters:", error);
+    res
+      .status(500)
+      .json({ message: "Erreur lors de la récupération des hunters", error });
+  }
+};
+
+export const deleteOffer = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log("dede");
+    const offer = await JobOffer.findByIdAndDelete(id);
+
+    if (!offer) {
+      return res.status(404).json({ message: "Offre non trouvé." });
+    }
+    res.status(200).json({ message: "Offre supprimé avec succès" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: "Erreur lors de la suppression de l'Offre",
+        error,
+      });
+  }
+};

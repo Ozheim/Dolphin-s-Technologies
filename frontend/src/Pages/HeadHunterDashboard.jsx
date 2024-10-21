@@ -2,48 +2,85 @@ import React, { useEffect, useState, useContext } from "react";
 import Header from "../Component/Header";
 import Footer from "../Component/Footer";
 import axios from "axios"
-import { AuthContext } from "../utils/AuthContext.jsx";
 import "../Styles/Pages/HeadHunterDashBoard.scss";
 import classNames from 'classnames';
 
-const HeadHunterDashBoard = () => {
-    const [hunter, setHunter] = useState([]);
+const HeadHunterDashboard = () => {
+    const [hunter] = useState([]);
+    const [offers, setOffers] = useState([]);
     const companyName = localStorage.getItem('companyName');
+    const huntertoken = localStorage.getItem("huntertoken");
+
     const role = localStorage.getItem('role');
 
     useEffect(() => {
-        const fetchJobsbyID = async () => {
+        const fetchOffers = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/jobs/${id}`);
-                setJobsById(response.data);
+                const resUsers = await axios.get("http://localhost:5000/api/getOffers", {
+                    headers: {
+                        "Authorization": `Bearer ${huntertoken}`
+                    }
+                });
+                console.log('Réponse API :', resUsers.data);
+                if (resUsers.data && resUsers.data.length) {
+                    setOffers(resUsers.data);
+                } else {
+                    console.log("No offers");
+                }
             } catch (error) {
-                console.error("Erreur lors de la récupération des jobs :", error);
+                console.log("Erreur lors de la récupération des offres:", error.response ? error.response.data.message : error.message);
             }
         };
-        fetchJobsbyID();
-    }, []);
+        fetchOffers();
+    }, [huntertoken]);
 
+    const handleDeleteOffer = async (id) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/deleteOffer/${id}`, {
+                headers: {
+                    "Authorization": `Bearer ${huntertoken}`
+                }
+            });
+            setOffers(offers.filter(offers => offers._id !== id));
+        } catch (error) {
+            console.log("Erreur lors de la suppression de l'offre:", error.response ? error.response.data.message : error.message);
+        }
+    };
+    if ((!offers || offers.length === 0)) {
+        return <div>Chargement des offres...</div>;
+    }
     return (
         <>
             <Header companyName={companyName} role={role} className={classNames({ 'header-red': 1 })} />
-            <div className="dashboard-container">
-                <div className="informations-card">
-                    {hunter.map(h => (
-                        <h1 key={h._id}>{h.companyName}</h1>
-                    ))}
-                </div>
-                <div className="annonces">
-                    <h1>Your Posted Jobs</h1>
-                    <div className="offercards">
-                        <h2>Title</h2>
-                        <p>Location</p>
-                        <p>Description</p>
-                    </div>
-                </div>
+            <div className='user-container'>
+                <h2>Utilisateurs</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Entreprise</th>
+                            <th>Salaire</th>
+                            <th>Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {offers.map(offer => (
+                            <tr key={offer._id}>
+                                <td>{offer.title}</td>
+                                <td>{offer.company}</td>
+                                <td>{offer.salary}</td>
+                                <td>
+                                    <button onClick={() => handleDeleteOffer(offer._id)}>Supprimer</button>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
             <Footer className={classNames({ 'ocean-red': 1, 'ocean': 1 })} isHeadhunterPage={1} />
-
         </>
     );
 };
-export default HeadHunterDashBoard;
+export default HeadHunterDashboard;

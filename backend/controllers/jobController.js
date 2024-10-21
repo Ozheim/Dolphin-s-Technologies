@@ -1,10 +1,19 @@
 import JobOffer from "../models/job.js";
 import PostForm from "../models/postForm.js";
 import mongoose from "mongoose";
+import { getUserId } from "../middleware/auth.js";
+
+
+// A un controller qui prends en paramètre mon hunter
+// Pour fill cette variable hunter, on va utiliser le token
 
 export const createJobOffers = async (req, res) => {
   try {
     const jobOffer = new JobOffer(req.body);
+
+    const hunterId = getUserId(req);
+    jobOffer.hunterId = hunterId;
+
     const insertedJob = await jobOffer.save();
     res.status(201).json(insertedJob);
   } catch (error) {

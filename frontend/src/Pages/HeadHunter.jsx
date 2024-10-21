@@ -52,7 +52,7 @@ const HeadHunter = () => {
       localStorage.setItem("companyName", companyName);
 
       console.log("Connexion réussie, token reçu :", huntertoken);
-      navigate('/HeadHunterDashBoard');
+      navigate('/HeadHunterDashboard');
     } catch (error) {
       console.error("Erreur lors de la connexion :", error);
     }
