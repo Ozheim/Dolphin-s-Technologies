@@ -21,10 +21,12 @@ const port = normalizePort(process.env.PORT || "8080");
 app.set("port", port);
 
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "..", "dist")));
+// Configuration pour servir le fichier statique index.html depuis dist/job_board
+app.use(express.static(path.join(__dirname, "..", "dist", "job_board")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
+  // Renvoi du fichier index.html à chaque route
+  res.sendFile(path.join(__dirname, "..", "dist", "job_board", "index.html"));
 });
 
 app.get("/api/users", (req, res) => {
