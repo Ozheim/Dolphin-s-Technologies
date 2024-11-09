@@ -1,7 +1,6 @@
 import express from "express";
-import dotenv from "dotenv";
-import { createServer } from "http";
 import path from "path";
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -21,48 +20,17 @@ const normalizePort = (val) => {
 const port = normalizePort(process.env.PORT || "8080");
 app.set("port", port);
 
-const errorHandler = (server, error) => {
-  if (error.syscall !== "listen") {
-    throw error;
-  }
-  const address = server.address();
-  const bind =
-    typeof address === "string" ? "pipe " + address : "port: " + port;
-  switch (error.code) {
-    case "EACCES":
-      console.error(bind + " requires elevated privileges.");
-      process.exit(1);
-      break;
-    case "EADDRINUSE":
-      console.error(bind + " is already in use.");
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-};
-
-const server = createServer(app);
-
-// Configurer le serveur pour servir les fichiers statiques du frontend
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "..", "dist")));
 
-// Route pour renvoyer `index.html` pour les routes non reconnues (utilisé pour le routing frontend)
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
 });
 
-// Exemple de route API pour les utilisateurs
 app.get("/api/users", (req, res) => {
   res.json({ message: "Liste des utilisateurs" });
 });
 
-server.on("error", (error) => errorHandler(server, error));
-server.on("listening", () => {
-  const address = server.address();
-  const bind = typeof address === "string" ? "pipe " + address : "port " + port;
-  console.log("Listening on " + bind);
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });
-
-server.listen(port);
