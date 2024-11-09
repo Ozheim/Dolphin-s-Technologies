@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "node server.js" 
+    "start": "node backend/server.js"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
