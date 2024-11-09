@@ -6,10 +6,12 @@
   "main": "server.js",
   "scripts": {
     "dev": "vite",
+    "start": "node backend/server.js",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "start": "node backend/server.js"
+    "preview": "vite preview"
+  },
+    
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
