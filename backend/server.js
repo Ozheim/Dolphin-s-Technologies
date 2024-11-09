@@ -46,11 +46,11 @@ const server = createServer(app);
 
 // Configurer le serveur pour servir les fichiers statiques du frontend
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "frontend", "dist")));
+app.use(express.static(path.join(__dirname, "dist")));
 
 // Route pour renvoyer `index.html` pour les routes non reconnues (utilisé pour le routing frontend)
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 // Exemple de route API pour les utilisateurs
