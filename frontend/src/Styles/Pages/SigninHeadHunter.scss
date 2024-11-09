@@ -1,0 +1,113 @@
+@import "../mixins.scss";
+
+html, body {
+    margin: 0;
+}
+
+.container-signin-headHunter {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+
+    .wrapper-signin-headHunter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 400px;
+
+        .signin-form-headHunter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 1.5rem;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+
+            .signin-title-headHunter {
+                @include font-primary(1.8rem, 600);
+                color: #c0392b; 
+                margin-bottom: 1.2rem;
+            }
+
+            .input-group-headHunter {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-bottom: 1rem;
+
+                .input-label-headHunter {
+                    color: #333;
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    margin-bottom: 0.3rem;
+                    margin-top: 1rem;
+                }
+
+                .signin-input-headHunter {
+                    border: 1px solid #ddd;
+                    padding: 0.6rem;
+                    border-radius: 10px;
+                    width: 100%;
+                    box-sizing: border-box;
+                    height: 42px;
+                    @include font-primary(1rem, 500);
+                    transition: border-color 0.3s ease;
+
+                    &:focus {
+                        outline: none;
+                        border-color: #c0392b;
+                        transform: scale(1.05);
+                        transition: transform 0.3s ease;
+                    }
+                }
+            }
+
+            .check-input-headHunter {
+                display: flex;
+                justify-content: center;
+                gap: 5px;
+                width: 100%;
+                @include font-primary(1rem, 400);
+                margin-top: 4%;
+                color: #b03a2e;
+            }
+
+            .signin-button-headHunter {
+                margin-top: 1.2rem;
+                width: 75%;
+                padding: 0.8rem;
+                border-radius: 25px;
+                background-color: #c0392b;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                box-shadow: 0px 4px 8px rgba(192, 57, 43, 0.2);
+
+                &:hover {
+                    background-color: #a93226;
+                    transform: translateY(-2px);
+                }
+            }
+
+            .signup-message-headHunter {
+                margin-top: 1.2rem;
+                color: #666;
+            }
+
+            .signup-link-headHunter {
+                color: #c0392b; 
+                @include font-primary(1rem, 500);
+                text-decoration: none;
+
+                &:hover {
+                    color: darken(#c0392b, 10%);
+                }
+            }
+        }
+    }
+}

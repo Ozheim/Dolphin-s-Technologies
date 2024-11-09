@@ -53,7 +53,7 @@ const HeadHunterDashboard = () => {
         <>
             <Header companyName={companyName} role={role} className={classNames({ 'header-red': 1 })} />
             <div className='user-container'>
-                <h2>Utilisateurs</h2>
+                <h2>Vos Offres ! </h2>
                 <table>
                     <thead>
                         <tr>

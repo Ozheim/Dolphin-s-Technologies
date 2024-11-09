@@ -7,7 +7,7 @@ import { AuthContext } from '../utils/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import Header from "../Component/Header";
 import "../Styles/Components/FooterTransition.scss";
-import "../Styles/Pages/HeadHunter.scss";
+import "../Styles/Pages/HeadHunterLogin.scss";
 import axios from "axios";
 
 const HeadHunter = () => {
@@ -52,7 +52,7 @@ const HeadHunter = () => {
       localStorage.setItem("companyName", companyName);
 
       console.log("Connexion réussie, token reçu :", huntertoken);
-      navigate('/HeadHunterDashboard');
+      navigate('/CreateOffer');
     } catch (error) {
       console.error("Erreur lors de la connexion :", error);
     }
@@ -60,33 +60,37 @@ const HeadHunter = () => {
 
   const isHeadhunterPage = location.pathname === '/HeadHunter' || location.pathname === "/DashBoardHeadHunter";
 
-  return (
-    <div>
-      <div>
-        <Header className={classNames({ 'header-red': isHeadhunterPage, 'header': !isHeadhunterPage })} />
-        <div>
-          <div className="container">
-            <form action="">
-              <h1>Connexion</h1>
-              <div className="name">
-                <label htmlFor="userName">Nom d'utilisateur</label>
-                <input type="text" id="userName" name="userName" onChange={(e) => setemail(e.target.value)} />
-              </div>
-              <div className="password">
-                <label htmlFor="userPassword">Mot de passe</label>
-                <input type="password" id="userPassword" name="userPassword" onChange={(e) => setpassword(e.target.value)} />
-              </div>
-              <button type="submit" onClick={headHunterHired}>GO !</button>
-              <p>
-                Vous n'avez pas encore de compte ? <a href="signinHeadHunter">Inscrivez-vous</a>
-              </p>
-            </form>
+ return (
+  <div>
+    <Header className={classNames({ 'header-red': isHeadhunterPage, 'header': !isHeadhunterPage })} />
+    <div className="container-login-headHunter">
+      <div className="wrapper-login-headHunter">
+        <form className="login-form-headHunter">
+          <h1 className="login-title-headHunter">Connexion</h1>
+          
+          <div className="input-group-headHunter">
+            <label className="input-label-headHunter" htmlFor="userName">Nom d'utilisateur</label>
+            <input type="text" className="login-input-headHunter" id="userName" name="userName" onChange={(e) => setemail(e.target.value)} />
           </div>
-        </div>
-        <Footer className={classNames({ 'ocean-red': isHeadhunterPage, 'ocean': !isHeadhunterPage })} isHeadhunterPage={isHeadhunterPage} />
+          
+          <div className="input-group-headHunter">
+            <label className="input-label-headHunter" htmlFor="userPassword">Mot de passe</label>
+            <input type="password" className="login-input-headHunter" id="userPassword" name="userPassword" onChange={(e) => setpassword(e.target.value)} />
+          </div>
+          
+          <button type="submit" className="login-button-headHunter" onClick={headHunterHired}>GO !</button>
+          
+          <p className="signup-message-headHunter">
+            Vous n'avez pas encore de compte ? <a className="signup-link-headHunter" href="signinHeadHunter">Inscrivez-vous</a>
+          </p>
+        </form>
       </div>
     </div>
-  );
+    <Footer className={classNames({ 'ocean-red': isHeadhunterPage, 'ocean': !isHeadhunterPage })} isHeadhunterPage={isHeadhunterPage} />
+  </div>
+);
+
+
 };
 
 export default HeadHunter;

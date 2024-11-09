@@ -39,34 +39,41 @@ const SignIn = () => {
     }
   }
 
-  return (
-    <div>
-      <Header />
-      <div className="container">
-        <form action="">
-          <h1>Inscription</h1>
-          <div className="name">
-            <label for="userName">Nom d'utilisateur</label>
-            <input type="text" id="userName" name="userName" onChange={(e) => setName(e.target.value)} />
+ return (
+  <div>
+    <Header />
+    <div className="container-signin">
+      <div className="wrapper-signin">
+        <form className="signin-form">
+          <h1 className="signin-title">Inscription</h1>
+          
+          <div className="input-group">
+            <label className="input-label" htmlFor="userName">Nom d'utilisateur</label>
+            <input type="text" id="userName" name="userName" className="signin-input" onChange={(e) => setName(e.target.value)} />
           </div>
-          <div className="email">
-            <label for="userEmail">E-mail</label>
-            <input type="text" id="userEmail" name="userEmail" required onChange={(e) => setEmail(e.target.value)} />
+          
+          <div className="input-group">
+            <label className="input-label" htmlFor="userEmail">E-mail</label>
+            <input type="text" id="userEmail" name="userEmail" className="signin-input" required onChange={(e) => setEmail(e.target.value)} />
           </div>
-          <div className="password">
-            <label for="userPassword">Mot de passe</label>
-            <input type="text" id="userPassword" name="userPassword" required onChange={(e) => setPassword(e.target.value)} />
+          
+          <div className="input-group">
+            <label className="input-label" htmlFor="userPassword">Mot de passe</label>
+            <input type="password" id="userPassword" name="userPassword" className="signin-input" required onChange={(e) => setPassword(e.target.value)} />
           </div>
+          
           <div className="check-input">
             <input type="checkbox" name="checked" id="checked" required />
-            <span>Cochez pour accepter les termes et conditions</span>
+            <span className="checkbox-label">Cochez pour accepter les termes et conditions</span>
           </div>
-          <button type="sumbit" onClick={signUp}>GO !</button>
+          
+          <button type="submit" className="signin-button" onClick={signUp}>GO !</button>
         </form>
       </div>
-      <Footer />
     </div>
-  );
+    <Footer />
+  </div>
+);
 };
 
 

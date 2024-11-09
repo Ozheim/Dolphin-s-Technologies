@@ -75,32 +75,40 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="container">
-        <form onSubmit={Connexion}>
-          <h1>Connexion</h1>
-          <div className="name">
-            <label htmlFor="userName">Adresse Email</label>
-            <input
-              type="text"
-              id="userName"
-              name="userName"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="password">
-            <label htmlFor="userPassword">Mot de passe</label>
-            <input
-              type="password"
-              id="userPassword"
-              name="userPassword"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <button type="submit">GO !</button>
-          <p>
-            Vous n'avez pas encore de compte ? <a href="signin">Inscrivez-vous</a>
-          </p>
-        </form>
+      <div className="container-login">
+        <div className="wrapper-login">
+          <form className="login-form" onSubmit={Connexion}>
+            <h1 className="login-title">Connexion</h1>
+            
+            <div className="input-group">
+              <label className="input-label" htmlFor="userName">Adresse Email</label>
+              <input
+                className="login-input"
+                type="text"
+                id="userName"
+                name="userName"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div className="input-group">
+              <label className="input-label" htmlFor="userPassword">Mot de passe</label>
+              <input
+                className="login-input"
+                type="password"
+                id="userPassword"
+                name="userPassword"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <button type="submit" className="login-button">GO !</button>
+            
+            <p className="signup-message">
+              Vous n'avez pas encore de compte ? <a className="signup-link" href="signin">Inscrivez-vous</a>
+            </p>
+          </form>
+        </div>
       </div>
       <Footer />
     </div>
