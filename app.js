@@ -11,7 +11,12 @@ import cors from "cors";
 
 dotenv.config();
 const app = express();
-app.use(cors());
+import cors from "cors";
+app.use(
+  cors({
+    origin: "https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io",
+  })
+);
 
 import mongoose from "mongoose";
 import dotenv from "dotenv";
