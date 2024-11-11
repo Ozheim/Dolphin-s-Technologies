@@ -26,7 +26,7 @@ app.set("port", port);
 const __dirname = path.resolve();
 
 // Serve les fichiers statiques depuis le dossier 'build' à la racine du projet
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "..build")));
 
 // Route pour toutes les autres requêtes
 app.get("*", (req, res) => {
