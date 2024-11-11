@@ -9,7 +9,7 @@ const JobsList = () => {
  useEffect(() => {
   const fetchJobs = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/jobs");
+      const response = await axios.get("https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/jobs");
       setBlogs(response.data);
     } catch (error) {
       console.error("Erreur lors de la récupération des jobs :", error);
