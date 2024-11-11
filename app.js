@@ -13,13 +13,22 @@ dotenv.config();
 const app = express();
 app.use(cors());
 
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+const dbURI = process.env.MONGO_URI;
+
 mongoose
-  .connect(process.env.MONGODB, {
+  .connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("Connexion à MongoDB réussie !"))
-  .catch((error) => console.log("Connexion à MongoDB échouée....", error));
+  .then(() => {
+    console.log("Connexion à la base de données réussie !");
+  })
+  .catch((err) => {
+    console.error("Erreur de connexion à la base de données :", err);
+  });
 
 app.use(express.json());
 app.use("/api", userRoutes);
