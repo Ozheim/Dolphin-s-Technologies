@@ -12,17 +12,24 @@ const Emploi = () => {
     const [jobDescription, setJobDescription] = useState(null);
     const [search, setSearch] = useState("");
 
-    useEffect(() => {
-        const fetchJobs = async () => {
-            try {
-                const response = await axios.get("https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/jobs");
+
+
+useEffect(() => {
+    const fetchJobs = async () => {
+        try {
+            const response = await axios.get("https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/jobs");
+            if (Array.isArray(response.data)) {
                 setJobs(response.data);
-            } catch (error) {
-                console.error("Erreur lors de la récupération des jobs :", error);
+            } else {
+                console.error("La réponse de l'API n'est pas un tableau : ", response.data);
             }
-        };
-        fetchJobs();
-    }, []);
+        } catch (error) {
+            console.error("Erreur lors de la récupération des jobs :", error);
+        }
+    };
+    fetchJobs();
+}, []);
+
 
     useEffect(() => {
         FooterTransitionDownJobPage();
@@ -32,21 +39,22 @@ const Emploi = () => {
         setJobDescription(jobId);
     };
 
-    const filteredJobs = jobs.filter((job) => {
-        if (search === "") {
-            return job;
-        }
-        else if (job.title.toLowerCase().includes(search.toLowerCase())) {
-            return job;
-        }
-        else if (job.location.toLowerCase().includes(search.toLowerCase())) {
-            return job;
-        }
-        else if (job.company.toLowerCase().includes(search.toLowerCase())) {
-            return job;
-        }
-        return null;
-    });
+   const filteredJobs = Array.isArray(jobs) ? jobs.filter((job) => {
+    if (search === "") {
+        return job;
+    }
+    else if (job.title.toLowerCase().includes(search.toLowerCase())) {
+        return job;
+    }
+    else if (job.location.toLowerCase().includes(search.toLowerCase())) {
+        return job;
+    }
+    else if (job.company.toLowerCase().includes(search.toLowerCase())) {
+        return job;
+    }
+    return null;
+}) : [];
+
 
   return (
     <div>
