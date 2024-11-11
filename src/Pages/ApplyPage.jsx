@@ -30,7 +30,7 @@ const ApplyPage = () => {
   const postForm = () => {
     try {
 
-      const post = axios.post("http://localhost:5000/api/form", {
+      const post = axios.post("https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/form", {
         name,
         firstName,
         Email,
@@ -60,7 +60,7 @@ const ApplyPage = () => {
     const getOneJob = async () => {
       try {
         console.log("je requete");
-        const response = await axios.get(`http://localhost:5000/api/jobs/${id}`);
+        const response = await axios.get(`https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/jobs/${id}`);
         setJob(response.data);
       } catch (error) {
         console.log("Erreur lors de la récupération du job :", error);
