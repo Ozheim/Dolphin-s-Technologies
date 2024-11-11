@@ -31,6 +31,10 @@ app.use(express.static(path.join(__dirname, "..", "build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
+console.log(
+  "Fichiers dans le dossier build:",
+  fs.readdirSync(path.join(__dirname, "..", "build"))
+);
 
 // Exemple d'API
 app.get("/api/users", (req, res) => {
