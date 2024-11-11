@@ -1,6 +1,6 @@
 import "../Styles/Pages/Login.scss";
-import Header from "../Component/Header";
-import Footer from "../Component/Footer";
+import Header from "../Component/Header.jsx";
+import Footer from "../Component/Footer.jsx";
 import React, { useEffect, useState, useContext } from 'react';
 import FooterTransitionDown from "../utils/FooterTransitonDown";
 import axios from "axios";

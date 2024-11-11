@@ -1,9 +1,9 @@
-import Header from "../Component/Header";
+import Header from "../Component/Header.jsx";
 import FooterTransitionDownJobPage from "../utils/FooterTransitionDownJobPage.jsx";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import "../Styles/Components/FooterTransition.scss";
-import Footer from "../Component/Footer";
+import Footer from "../Component/Footer.jsx";
 import "../Styles/Pages/JobPage.scss";
 import axios from "axios";
 
