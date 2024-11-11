@@ -1,6 +1,6 @@
 {
   "deploy": {
-    "build_script": "npm install && npm run build",
+    "build_script": "npm run build",
     "run_script": "node backend/server.js"
   }
 }
