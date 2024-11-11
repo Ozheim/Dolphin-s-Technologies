@@ -6,6 +6,7 @@ dotenv.config();
 
 const app = express();
 
+// Normalisation du port
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
   if (isNaN(port)) {
@@ -20,19 +21,23 @@ const normalizePort = (val) => {
 const port = normalizePort(process.env.PORT || "8080");
 app.set("port", port);
 
+// Récupère le chemin du répertoire courant (backend)
 const __dirname = path.resolve();
-app.use(
-  express.static(path.join(__dirname, "..", "/dist/job_board  /index.html"))
-);
 
+// Serve les fichiers statiques depuis le dossier 'build' à la racine du projet
+app.use(express.static(path.join(__dirname, "..", "build")));
+
+// Route pour toutes les autres requêtes
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 
+// Exemple d'API
 app.get("/api/users", (req, res) => {
   res.json({ message: "Liste des utilisateurs" });
 });
 
+// Lancement du serveur
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
