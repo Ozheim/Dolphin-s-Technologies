@@ -16,7 +16,7 @@ const HeadHunterDashboard = () => {
     useEffect(() => {
         const fetchOffers = async () => {
             try {
-                const resUsers = await axios.get("http://localhost:5000/api/getOffers", {
+                const resUsers = await axios.get("https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/getOffers", {
                     headers: {
                         "Authorization": `Bearer ${huntertoken}`
                     }
@@ -36,7 +36,7 @@ const HeadHunterDashboard = () => {
 
     const handleDeleteOffer = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/deleteOffer/${id}`, {
+            await axios.delete(`https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/deleteOffer/${id}`, {
                 headers: {
                     "Authorization": `Bearer ${huntertoken}`
                 }

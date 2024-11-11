@@ -27,7 +27,7 @@ const SignIn = () => {
     try {
       const response = await axios({
         method: "post",
-        url: "http://localhost:5000/api/createUsers",
+        url: "https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/createUsers",
         data: { name, email, password },
       })
       localStorage.setItem("huntertoken", response.data.huntertoken);

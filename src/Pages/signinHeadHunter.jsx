@@ -30,7 +30,7 @@ const SigninHeadHunter = () => {
     try {
       const response = await axios({
         method: "post",
-        url: "http://localhost:5000/api/hunters",
+        url: "https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/hunters",
         data: { companyName, email, password },
       });
       localStorage.setItem("huntertoken", response.data.huntertoken);
