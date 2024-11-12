@@ -32,6 +32,7 @@ const SignIn = () => {
       })
       localStorage.setItem("huntertoken", response.data.huntertoken);
       console.log("user log");
+      navigate(`/Login `)
       
 
     } catch (error) {
