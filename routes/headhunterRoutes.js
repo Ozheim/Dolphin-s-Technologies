@@ -15,8 +15,8 @@ router.post("/hunters", createHunter);
 router.get("/allHunters", adminAuth, getAllHunters);
 router.get("/getOffers", headhunterAuth, getOffers);
 router.post("/loginHunters", loginHunter);
-router.delete("/deletesHunters/:id", adminAuth, deleteHunter);
-router.delete("/deleteOffer/:id", headhunterAuth, deleteOffer);
+router.delete("/deleteHunter/:id", adminAuth, deleteHunter);
 
+router.delete("/deleteOffer/:id", headhunterAuth, deleteOffer);
 
 export default router;
