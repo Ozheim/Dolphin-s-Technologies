@@ -1,10 +1,12 @@
 import "../Styles/Pages/signin.scss"
 import Header from "../Component/Header"
 import Footer from "../Component/Footer"
-import { useState,useEffect } from "react";
+import { useState,useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const SignIn = () => {
+    const Navigate = useNavigate()
 
    useEffect(() => {
         const htmlElement = document.documentElement;
@@ -32,7 +34,7 @@ const SignIn = () => {
       })
       localStorage.setItem("huntertoken", response.data.huntertoken);
       console.log("user log");
-      navigate(`/Login `)
+      Navigate(`/Login `)
       
 
     } catch (error) {

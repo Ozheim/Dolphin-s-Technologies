@@ -52,7 +52,7 @@ const SigninHeadHunter = () => {
           <h1 className="signin-title-headHunter">Inscription</h1>
 
           <div className="input-group-headHunter">
-            <label className="input-label-headHunter" htmlFor="userName">Adresse Email</label>
+            <label className="input-label-headHunter" htmlFor="userName">nom utilisateur</label>
             <input
               type="text"
               id="userName"
