@@ -39,7 +39,8 @@ const Login = () => {
       const res = await axios.post("https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/login", {
         email,
         password,
-      });
+      }, {
+  headers: { "Content-Type": "application/json" }});
       console.log('Réponse API :', res.data);
 
       const { token, userId, role, name } = res.data;
