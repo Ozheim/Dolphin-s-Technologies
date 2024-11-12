@@ -35,7 +35,7 @@ const SigninHeadHunter = () => {
       });
       localStorage.setItem("huntertoken", response.data.huntertoken);
       console.log("hunter created");
-      Navigate("/Signin")
+      Navigate("/HeadHunter")
     }
     catch (error) {
       console.log("mes erreurs: ", error)
