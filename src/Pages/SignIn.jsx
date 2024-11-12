@@ -22,7 +22,7 @@ const SignIn = () => {
   const [name, setName] = useState();
 
   const signUp = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
 
     try {
       const response = await axios({
