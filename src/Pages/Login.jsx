@@ -40,7 +40,7 @@ const Login = () => {
         email,
         password,
       }, {
-  headers: { "Content-Type": "application/json" }});
+       headers: { "Content-Type": "application/json" }});
       console.log('Réponse API :', res.data);
 
       const { token, userId, role, name } = res.data;
