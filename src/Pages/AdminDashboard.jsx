@@ -64,7 +64,7 @@ const AdminDashboard = () => {
     const handleDeleteHunter = async (id) => {
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/deleteHunter/${id}`, {
+            await axios.delete(`https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/deletesHunter/${id}`, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
