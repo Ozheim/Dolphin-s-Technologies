@@ -10,7 +10,7 @@ const PrivateRoute = ({ children, roleRequired }) => {
     }
     if (role !== roleRequired) {
         console.log(`Accès refusé. Vous n'êtes pas un ${roleRequired}.`);
-        return <Navigate to="/" />;
+        return <Navigate to="/Login" />;
     }
 
     return children;
