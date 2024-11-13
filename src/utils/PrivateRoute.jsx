@@ -16,4 +16,7 @@ const PrivateRoute = ({ children, roleRequired }) => {
     return children;
 };
 
+
 export default PrivateRoute;
+
+
