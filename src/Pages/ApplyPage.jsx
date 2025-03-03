@@ -60,7 +60,7 @@ const ApplyPage = () => {
     const getOneJob = async () => {
       try {
         console.log("je requete");
-        const response = await axios.get(`https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/jobs/${id}`);
+        const response = await axios.get(`https://app-59a0866c-f942-465a-a8b0-39a7f75184c6.cleverapps.io/api/jobs/${id}`);
         setJob(response.data);
       } catch (error) {
         console.log("Erreur lors de la récupération du job :", error);

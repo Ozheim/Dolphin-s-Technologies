@@ -13,7 +13,7 @@ const ParameterProfil = () => {
             try {
                 const token = localStorage.getItem("token");
 
-                const resUsers = await axios.get(`https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/users/${UserId}`, {
+                const resUsers = await axios.get(`https://app-59a0866c-f942-465a-a8b0-39a7f75184c6.cleverapps.io/api/users/${UserId}`, {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
