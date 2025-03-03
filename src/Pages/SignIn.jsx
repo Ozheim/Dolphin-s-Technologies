@@ -29,7 +29,7 @@ const SignIn = () => {
     try {
       const response = await axios({
         method: "post",
-        url: "https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/createUsers",
+        url: "https://app-59a0866c-f942-465a-a8b0-39a7f75184c6.cleverapps.io/api/createUsers",
         data: { name, email, password },
       })
       localStorage.setItem("huntertoken", response.data.huntertoken);

@@ -16,7 +16,7 @@ const AdminDashboard = () => {
             try {
                 const token = localStorage.getItem("token");
 
-                const resUsers = await axios.get("https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/allUser", {
+                const resUsers = await axios.get("https://app-59a0866c-f942-465a-a8b0-39a7f75184c6.cleverapps.io/api/allUser", {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
@@ -28,7 +28,7 @@ const AdminDashboard = () => {
                     console.log("Aucun utilisateur trouvé.");
                 }
 
-                const resHunter = await axios.get("https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/allHunters", {
+                const resHunter = await axios.get("https://app-59a0866c-f942-465a-a8b0-39a7f75184c6.cleverapps.io/api/allHunters", {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
@@ -50,7 +50,7 @@ const AdminDashboard = () => {
     const handleDeleteUser = async (id) => {
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/deleteUser/${id}`, {
+            await axios.delete(`https://app-59a0866c-f942-465a-a8b0-39a7f75184c6.cleverapps.io/api/deleteUser/${id}`, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -64,7 +64,7 @@ const AdminDashboard = () => {
     const handleDeleteHunter = async (id) => {
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/deleteHunter/${id}`, {
+            await axios.delete(`https://app-59a0866c-f942-465a-a8b0-39a7f75184c6.cleverapps.io/api/deleteHunter/${id}`, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }

@@ -36,7 +36,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://app-70e64c03-d572-47f0-a6ce-b6f9fafb2837.cleverapps.io/api/login", {
+      const res = await axios.post("https://app-59a0866c-f942-465a-a8b0-39a7f75184c6.cleverapps.io/api/login", {
         email,
         password,
       }, {
